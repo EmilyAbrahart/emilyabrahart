@@ -7,10 +7,8 @@ import { FlexFunc } from '../styles/styles';
 const Layout = () => {
 	return (
 		<AppContainer>
-			<PageContainer>
-				<Nav />
-				<SiteContent />
-			</PageContainer>
+			<Nav />
+			<SiteContent />
 		</AppContainer>
 	);
 };
@@ -21,11 +19,5 @@ const AppContainer = styled.div`
 	width: 100%;
 	height: 100vh;
 	${FlexFunc('column', 'center', 'center')}
-	
-`;
-const PageContainer = styled.div`
-	width: 100%;
-	max-width: 1024px;
-	margin-bottom: 2rem;
-	height: 100%;
+	padding: 0 2rem 2rem 2rem;
 `;
