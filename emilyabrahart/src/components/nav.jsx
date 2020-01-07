@@ -13,7 +13,10 @@ const Nav = () => {
 				<SocialLink href="https://github.com/EmilyAbrahart" target="_blank">
 					<FontAwesomeIcon icon={faGithub} />
 				</SocialLink>
-				<SocialLink href="https://www.linkedin.com/in/emilyabrahart" target="_blank">
+				<SocialLink
+					href="https://www.linkedin.com/in/emilyabrahart"
+					target="_blank"
+				>
 					<FontAwesomeIcon icon={faLinkedin} />
 				</SocialLink>
 				<SocialLink href="#">
@@ -43,13 +46,13 @@ const LinkContainer = styled.div`
 `;
 
 const SocialLink = styled.a`
-  font-size: 1rem;
-  color: ${color_dark};
-  padding: 0.5rem;
-  margin-left: 1rem;
+	font-size: 1rem;
+	color: ${color_dark};
+	padding: 0.5rem;
+	margin-left: 1rem;
 
-  &:hover {
-    color: ${color_accent};
-  }
-`
+	&:hover {
+		color: ${color_accent};
+	}
+`;
 export default Nav;
