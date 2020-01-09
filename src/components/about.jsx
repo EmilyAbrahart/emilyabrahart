@@ -1,29 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-	faReact,
-	faHtml5,
-	faCss3,
-	faJs,
-	faNodeJs
-} from '@fortawesome/free-brands-svg-icons';
+import { faReact, faJs, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import photo from '../img/self-photo.jpg';
 import { FlexFunc, color_accent, color_subtle } from '../styles/styles';
+import { Icon } from '@iconify/react';
+import bxlLess from '@iconify/icons-bx/bxl-less';
+import bxlRedux from '@iconify/icons-bx/bxl-redux';
+import styledComponents from '@iconify/icons-simple-icons/styled-components'
 
 const About = props => {
 	return (
 		<AboutContainer>
-			<AboutContent aboutExpanded={props.aboutExpanded}>
+			<AboutContent
+				aboutExpanded={props.aboutExpanded}
+				projectsExpanded={props.projectsExpanded}
+			>
 				<img src={photo} alt="Emily Abrahart" />
 
 				<AboutSection>
 					<h2>ABOUT ME</h2>
 					<p>
-						I'm a full stack web developer currently studying with Lambda School
-						and based in London, UK. During my time at Lambda I have also worked
-						as a Section Lead, managing a cohort of staff and approximately 80
-						students from across Europe and Africa.
+						I&apos;m a full stack web developer currently studying with Lambda
+						School and based in London, UK. During my time at Lambda I have also
+						worked as a Section Lead, managing a cohort of staff and
+						approximately 80 students from across Europe and Africa.
 					</p>
 
 					<p>
@@ -42,13 +43,16 @@ const About = props => {
 							<FontAwesomeIcon icon={faReact} />
 						</SkillDiv>
 						<SkillDiv>
+							<Icon icon={bxlRedux} />
+						</SkillDiv>
+						<SkillDiv>
 							<FontAwesomeIcon icon={faNodeJs} />
 						</SkillDiv>
 						<SkillDiv>
-							<FontAwesomeIcon icon={faHtml5} />
+							<Icon icon={styledComponents} />
 						</SkillDiv>
 						<SkillDiv>
-							<FontAwesomeIcon icon={faCss3} />
+							<Icon icon={bxlLess} />
 						</SkillDiv>
 					</SkillsContainer>
 					<p>Some examples of my work can be found below.</p>
@@ -85,7 +89,9 @@ const AboutContent = styled.div`
 	position: absolute;
 	transition: all 0.5s ease-out;
 	left: ${props => (props.aboutExpanded ? '20%' : '0')};
-	opacity: ${props => (props.aboutExpanded ? '100%' : '0')};
+	top: ${props => (props.projectsExpanded ? '-100%' : '0')};
+	opacity: ${props =>
+		props.aboutExpanded && !props.projectsExpanded ? '100%' : '0'};
 
 	img {
 		width: 100px;

@@ -5,6 +5,7 @@ import Projects from './projects';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import { color_dark, color_subtle, color_accent } from '../styles/styles';
+import ProjectsArray from '../data/data';
 
 const SiteContent = () => {
 	const [aboutExpanded, setAboutExpanded] = useState(false);
@@ -39,6 +40,8 @@ const SiteContent = () => {
 		stepCounter();
 	};
 
+	const [projects, setProjects] = useState(ProjectsArray);
+
 	return (
 		<SiteContentContainer>
 			<Home
@@ -48,6 +51,7 @@ const SiteContent = () => {
 				toggleProjectsExpand={toggleProjectsExpand}
 			/>
 			<Projects
+				projects={projects}
 				toggleProjectsExpand={toggleProjectsExpand}
 				projectsExpanded={projectsExpanded}
 			/>
@@ -69,16 +73,7 @@ const SiteContentContainer = styled.div`
 	height: 100%;
 	position: relative;
 	overflow-y: hidden;
-
-	a {
-		color: ${color_subtle};
-		font-size: 3rem;
-		padding: 1rem;
-
-		&:hover {
-			color: ${color_dark};
-		}
-	}
+	
 `;
 
 const AboutButton = styled.button`

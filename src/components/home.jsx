@@ -22,10 +22,13 @@ const Home = props => {
 					<div>London, UK</div>
 				</TaglineContainer>
 			</HomeLeft>
-			<HomeLeftBlock></HomeLeftBlock>
 			<HomeRight>
-				EMILY
-				<br /> ABRA <br /> HART<span>.</span>
+				<HomeRightContent aboutExpanded={props.aboutExpanded}>
+					<h1>
+						EMILY
+						<br /> ABRA <br /> HART<span>.</span>
+					</h1>
+				</HomeRightContent>
 			</HomeRight>
 		</HomeContainer>
 	);
@@ -41,10 +44,6 @@ const HomeContainer = styled.div`
 	overflow-x: hidden;
 `;
 
-const HomeLeftBlock = styled.div`
-	height: 100%;
-	width: 100%;
-`;
 const HomeLeft = styled.div`
 	position: absolute;
 	left: ${props => (props.aboutExpanded ? '0' : '-50%')};
@@ -55,21 +54,31 @@ const HomeLeft = styled.div`
 	padding: 1rem 2rem;
 	${FlexFunc('column', 'center', 'flex-end')};
 	font-size: 1.2rem;
-	transition: all 0.5s linear;
+	transition: all 0.5s ease-out;
 `;
 
 const HomeRight = styled.div`
 	background: ${color_subtle};
-	color: ${color_dark};
-	font-weight: bold;
-	font-size: 6rem;
 	height: 100%;
 	width: 100%;
 	padding: 1rem 2rem;
+`;
 
-	span {
-		color: ${color_accent};
-		font-size: 7rem;
+const HomeRightContent = styled.div`
+	padding-left: 2rem;
+	transition: all 0.5s ease-out;
+	position: absolute;
+	left: ${props => (props.aboutExpanded ? '100%' : '50%')};
+	opacity: ${props => (props.aboutExpanded ? '0' : '100%')};
+	h1 {
+		color: ${color_dark};
+		font-weight: bold;
+		font-size: 6rem;
+
+		span {
+			color: ${color_accent};
+			font-size: 7rem;
+		}
 	}
 `;
 
@@ -77,7 +86,7 @@ const TaglineContainer = styled.div`
 	padding-bottom: 8rem;
 	text-align: right;
 	position: absolute;
-	transition: all 0.5s linear;
+	transition: all 0.5s ease-out;
 	bottom: 2rem;
 	right: ${props => (props.aboutExpanded ? '-25%' : '2rem')};
 `;
