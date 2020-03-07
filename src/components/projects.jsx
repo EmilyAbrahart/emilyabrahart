@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import Project from './project';
-import { FlexFunc, color_subtle } from '../styles/styles';
+import { FlexFunc, color_dark, color_light } from '../styles';
 
 const Projects = props => {
 	return (
-		<ProjectsContainer projectsExpanded={props.projectsExpanded}>
+		<ProjectsContainer counter={props.counter}>
 			<h2>PROJECTS</h2>
 			<ProjectsContentContainer>
 				{props.projects.map(project => {
@@ -25,10 +25,16 @@ const ProjectsContainer = styled.div`
 	letter-spacing: 2px;
 	position: absolute;
 	overflow-x: hidden;
-	background: ${color_subtle};
-	top: ${props => (props.projectsExpanded ? '0' : '100%')};
+	background: ${color_dark};
+	top: ${props =>
+		props.counter === 3
+			? '0'
+			: props.counter > 3
+			? '-100%'
+			: '100%'};
 	transition: all 0.5s ease-out;
 	h2 {
+		color: ${color_light};
 		letter-spacing: 0.5rem;
 	}
 `;

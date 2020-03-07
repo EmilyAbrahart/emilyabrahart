@@ -6,16 +6,15 @@ import {
 	color_accent,
 	color_dark,
 	color_subtle
-} from '../styles/styles';
+} from '../styles';
 
 const Home = props => {
 	return (
 		<HomeContainer>
 			<HomeLeft aboutExpanded={props.aboutExpanded}>
 				<About
+					counter={props.counter}
 					aboutExpanded={props.aboutExpanded}
-					projectsExpanded={props.projectsExpanded}
-					toggleProjectsExpand={props.toggleProjectsExpand}
 				/>
 				<TaglineContainer aboutExpanded={props.aboutExpanded}>
 					<Tagline>Full Stack Web Developer</Tagline>

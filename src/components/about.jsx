@@ -3,16 +3,17 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faJs, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import photo from '../img/self-photo.jpg';
-import { FlexFunc, color_accent, color_subtle } from '../styles/styles';
+import { FlexFunc, color_accent, color_subtle } from '../styles';
 import { Icon } from '@iconify/react';
 import bxlLess from '@iconify/icons-bx/bxl-less';
 import bxlRedux from '@iconify/icons-bx/bxl-redux';
-import styledComponents from '@iconify/icons-simple-icons/styled-components'
+import styledComponents from '@iconify/icons-simple-icons/styled-components';
 
 const About = props => {
 	return (
 		<AboutContainer>
 			<AboutContent
+				counter={props.counter}
 				aboutExpanded={props.aboutExpanded}
 				projectsExpanded={props.projectsExpanded}
 			>
@@ -89,9 +90,8 @@ const AboutContent = styled.div`
 	position: absolute;
 	transition: all 0.5s ease-out;
 	left: ${props => (props.aboutExpanded ? '20%' : '0')};
-	top: ${props => (props.projectsExpanded ? '-100%' : '0')};
-	opacity: ${props =>
-		props.aboutExpanded && !props.projectsExpanded ? '100%' : '0'};
+	top: ${props => (props.counter > 2 ? '-100%' : '0')};
+	opacity: ${props => (props.aboutExpanded ? '100%' : '0')};
 
 	img {
 		width: 100px;

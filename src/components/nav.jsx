@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faFile, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
-import { FlexFunc, color_dark, color_accent } from '../styles/styles';
+import { FlexFunc, color_dark, color_accent, color_subtle } from '../styles';
 
-const Nav = () => {
+const Nav = props => {
 	return (
-		<NavContainer>
-			<NavName>EMILY ABRAHART</NavName>
-			<LinkContainer>
+		<NavContainer counter={props.counter}>
+			<NavName counter={props.counter}>EMILY ABRAHART</NavName>
+			<LinkContainer counter={props.counter}>
 				<SocialLink href="https://github.com/EmilyAbrahart" target="_blank">
 					<FontAwesomeIcon icon={faGithub} />
 				</SocialLink>
@@ -22,33 +22,41 @@ const Nav = () => {
 				<SocialLink href="#">
 					<FontAwesomeIcon icon={faFile} />
 				</SocialLink>
-				<SocialLink href="#">
-					<FontAwesomeIcon icon={faEnvelopeSquare} />
-				</SocialLink>
 			</LinkContainer>
 		</NavContainer>
 	);
 };
 
 const NavContainer = styled.div`
-	width: 100%;
-	${FlexFunc('row', 'space-between', 'center')};
+	justify-content: flex-start;
+	align-items: baseline;
+	display: flex;
+	position: absolute;
+	top: 1rem;
+	left: 1rem;
+	z-index: 1000;
+	transition: all 0.5s ease-out;
 `;
 
 const NavName = styled.div`
-	color: ${color_dark};
 	font-weight: bold;
 	letter-spacing: 2px;
 	font-size: 13px;
+	color: ${props => (props.counter > 3 ? color_dark : color_subtle)};
+	transition: all 0.5s ease-out;
 `;
 const LinkContainer = styled.div`
-	${FlexFunc('row', 'space-evenly', 'center')}
+	${FlexFunc('row', 'space-evenly', 'flex-start')}
+	a {
+		color: ${props => (props.counter === 4 ? color_dark : color_subtle)};
+		transition: all 0.5s ease-out;
+	}
 `;
 
 const SocialLink = styled.a`
 	font-size: 1rem;
-	color: ${color_dark};
-	padding: 0.5rem;
+	color: ${props => (props.counter === 4 ? color_dark : color_subtle)};
+	padding: 0 0.5rem;
 	margin-left: 1rem;
 
 	&:hover {

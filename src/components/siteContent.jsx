@@ -4,26 +4,21 @@ import Home from './home';
 import Projects from './projects';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
-import { color_dark, color_subtle, color_accent } from '../styles/styles';
+import { color_dark, color_subtle, color_accent } from '../styles';
 import ProjectsArray from '../data/data';
+import Nav from './nav';
+import Contact from './contact';
 
 const SiteContent = () => {
 	const [aboutExpanded, setAboutExpanded] = useState(false);
-	const toggleAboutExpand = () => {
-		setAboutExpanded(!aboutExpanded);
-	};
-
-	const [projectsExpanded, setProjectsExpanded] = useState(false);
-	const toggleProjectsExpand = () => {
-		setProjectsExpanded(!projectsExpanded);
-	};
-
 	const [incrementing, setIncrementing] = useState(true);
 	let [counter, setNextCounter] = useState(1);
 
 	const stepCounter = () => {
-		if (counter === 0 || counter === 2) {
-			setIncrementing(!incrementing);
+		if (counter === 2) {
+			setIncrementing(true);
+		} else if (counter === 3) {
+			setIncrementing(false);
 		}
 		if (incrementing) {
 			setNextCounter((counter += 1));
@@ -32,10 +27,10 @@ const SiteContent = () => {
 	};
 
 	const clickHandler = () => {
-		if ((counter === 2 && incrementing) || counter === 3) {
-			toggleProjectsExpand();
-		} else {
-			toggleAboutExpand();
+		if (counter === 1) {
+			setAboutExpanded(true);
+		} else if (counter === 2 && !incrementing) {
+			setAboutExpanded(false);
 		}
 		stepCounter();
 	};
@@ -44,17 +39,13 @@ const SiteContent = () => {
 
 	return (
 		<SiteContentContainer>
-			<Home
-				aboutExpanded={aboutExpanded}
-				toggleAboutExpand={toggleAboutExpand}
-				projectsExpanded={projectsExpanded}
-				toggleProjectsExpand={toggleProjectsExpand}
-			/>
-			<Projects
-				projects={projects}
-				toggleProjectsExpand={toggleProjectsExpand}
-				projectsExpanded={projectsExpanded}
-			/>
+			<NavContainer counter={counter} aboutExpanded={aboutExpanded}>
+				<Nav counter={counter} />
+			</NavContainer>
+
+			<Home counter={counter} aboutExpanded={aboutExpanded} />
+			<Projects counter={counter} projects={projects} />
+			<Contact counter={counter} />
 			<AboutButton
 				counter={counter}
 				incrementing={incrementing}
@@ -73,27 +64,22 @@ const SiteContentContainer = styled.div`
 	height: 100%;
 	position: relative;
 	overflow-y: hidden;
-	
 `;
 
 const AboutButton = styled.button`
 	border: none;
 	background: none;
 	color: ${props =>
-		props.counter === 1
-			? color_dark
-			: props.counter === 2
-			? color_subtle
-			: color_accent};
+		props.counter === 2 || props.counter === 3 ? color_subtle : color_dark};
 	font-size: 3rem;
 	transform: rotate(0deg);
 	transition: all 0.5s ease-out;
 	transform: ${props =>
-		props.counter === 2 && props.incrementing
+		(props.counter === 2 || props.counter === 3) && props.incrementing
 			? `rotate(90deg)`
-			: props.counter === 3
+			: props.counter == 4 || (props.counter === 3 && !props.incrementing)
 			? `rotate(270deg)`
-			: props.counter === 2
+			: props.counter === 2 || !props.incrementing
 			? `rotate(180deg)`
 			: ''};
 	position: absolute;
@@ -106,4 +92,9 @@ const AboutButton = styled.button`
 	&:hover {
 		cursor: pointer;
 	}
+`;
+
+const NavContainer = styled.div`
+	left: ${props => (props.aboutExpanded ? '0' : '-20%')};
+	transition: all 0.5s ease-out;
 `;

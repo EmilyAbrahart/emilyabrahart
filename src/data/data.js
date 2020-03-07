@@ -18,33 +18,23 @@ const ProjectsArray = [
 	},
 	{
 		id: 2,
-		name: 'WUNDERLIST',
-		img: 'https://i.gyazo.com/bec7979d659ad76b54b6bc2bdd5e240b.png',
+		name: 'BEING BEYONCÉ&apos;S ASSISTANT',
+		img: 'https://i.gyazo.com/7f3a799669a0fb522274588c749ea883.png',
+		ghlink: 'https://github.com/Online-Game-CS/cs-bw1-frontend2',
+		sitelink: 'https://beyonces-assistant.netlify.com',
+		description:
+			'A web based game in which the player aims to successfully complete all of the challenges to win.',
+		technologies: ['React', 'Redux', 'Javascript']
+	},
+	{
+		id: 3,
+		name: 'WTHR',
+		img: 'https://i.gyazo.com/6a6473e2b87e9419cad81cced3167bdf.png',
 		ghlink: 'https://github.com/EmilyAbrahart/Wunderlist2',
 		sitelink: 'https://wunderlist2-emilyabrahart.netlify.com',
 		description:
 			'A todo list app with recurring task scheduling and archiving functionality.',
 		technologies: ['React', 'Redux', 'Javascript']
-	},
-	{
-		id: 3,
-		name: 'LAMBDA TIMES',
-		img: 'https://i.gyazo.com/3beb53fe7a8f305a7a1e57808b661294.png',
-		ghlink:
-			'https://github.com/EmilyAbrahart/Sprint-Challenge-Lambda-Times-React',
-		sitelink: 'https://wunderlist2-emilyabrahart.netlify.com',
-		description: 'A news app to display articles sorted by catergory.',
-		technologies: ['React', 'Javascript']
-	},
-	{
-		id: 4,
-		name: 'WUNDERLIST',
-		img: 'https://i.gyazo.com/8eac753e25a41ccc07c7b75be1bd12ad.png',
-		ghlink: 'https://github.com/EmilyAbrahart/Wunderlist',
-		sitelink: 'https://emilyabrahart.github.io/Wunderlist',
-		description:
-			'Wunderlist is a todo list app and I was tasked with creating a marketing page to display information about its features.',
-		technologies: ['HTML', 'CSS', 'LESS']
 	}
 ];
 

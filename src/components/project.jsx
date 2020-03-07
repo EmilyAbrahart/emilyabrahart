@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FlexFunc, color_subtle, color_dark } from '../styles/styles';
+import { FlexFunc, color_subtle, color_dark } from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -31,12 +31,11 @@ export default Project;
 
 const ProjectContainer = styled.div`
 	background: ${color_dark};
-	width: 20%;
+	width: 50%;
 	height: 60%;
 	margin: 1rem;
-	border: 2px solid ${color_dark};
-	background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-		url(${props => props.img});
+	border: 2px solid ${color_subtle};
+	background: url(${props => props.img});
 	background-attachment: center;
 	background-position: center;
 	background-size: auto 100%;
