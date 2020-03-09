@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faFile, faEnvelopeSquare } from '@fortawesome/free-solid-svg-icons';
-import { FlexFunc, color_dark, color_accent, color_subtle } from '../styles';
+import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { FlexFunc, color_dark, color_accent, color_subtle, mobile } from '../styles';
 
 const Nav = props => {
 	return (
@@ -36,6 +36,11 @@ const NavContainer = styled.div`
 	left: 1rem;
 	z-index: 1000;
 	transition: all 0.5s ease-out;
+
+	@media ${mobile} {
+		width: 100%;
+		justify-content: center;
+	}
 `;
 
 const NavName = styled.div`

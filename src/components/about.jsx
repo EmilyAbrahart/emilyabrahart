@@ -3,7 +3,13 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReact, faJs, faNodeJs } from '@fortawesome/free-brands-svg-icons';
 import photo from '../img/self-photo.jpg';
-import { FlexFunc, color_accent, color_subtle } from '../styles';
+import {
+	FlexFunc,
+	color_accent,
+	color_subtle,
+	mobile,
+	tablet
+} from '../styles';
 import { Icon } from '@iconify/react';
 import bxlLess from '@iconify/icons-bx/bxl-less';
 import bxlRedux from '@iconify/icons-bx/bxl-redux';
@@ -35,7 +41,6 @@ const About = props => {
 					</p>
 				</AboutSection>
 				<AboutSection>
-					<h2>TECHNOLOGIES</h2>
 					<SkillsContainer>
 						<SkillDiv>
 							<FontAwesomeIcon icon={faJs} />
@@ -56,8 +61,8 @@ const About = props => {
 							<Icon icon={bxlLess} />
 						</SkillDiv>
 					</SkillsContainer>
-					<p>Some examples of my work can be found below.</p>
 				</AboutSection>
+				<p className="examples">Some examples of my work can be found below.</p>
 			</AboutContent>
 		</AboutContainer>
 	);
@@ -73,11 +78,11 @@ ${FlexFunc('column', 'space-evenly', 'center')}
   color: ${color_subtle};
 	position: relative;
 	overflow-y: hidden;
-	a {
+	/* a {
 		position: absolute;
 		top: 50%;
 		right: 2rem;
-	}
+	} */
 `;
 
 const AboutContent = styled.div`
@@ -100,20 +105,49 @@ const AboutContent = styled.div`
 	}
 
 	p {
-		font-size: 1rem;
+		font-size: 0.9rem;
 	}
 
 	h2 {
 		letter-spacing: 0.5rem;
 	}
+
+	@media ${tablet} {
+		padding: 1rem;
+	}
+
+	@media ${mobile} {
+		padding: 0.6rem;
+		width: 100%;
+		line-height: 1rem;
+		${FlexFunc('column', 'space-evenly', 'center')}
+		left: 0;
+
+		p {
+			font-size: 0.8rem;
+			margin: 1rem 0;
+
+			&.examples {
+				display: none;
+			}
+		}
+
+		img {
+			display: none;
+		}
+	}
 `;
 const AboutSection = styled.section`
 	text-align: center;
-	padding: 2rem 0;
+	padding: 1rem 0;
+	@media ${mobile} {
+		padding: 1rem 0 0 0;
+	}
 `;
 
 const SkillsContainer = styled.div`
 	${FlexFunc('row', 'center', 'center')}
+	flex-wrap: wrap;
 `;
 const SkillDiv = styled.div`
 	font-size: 3rem;

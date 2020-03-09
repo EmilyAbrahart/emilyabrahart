@@ -4,7 +4,7 @@ import Home from './home';
 import Projects from './projects';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
-import { color_dark, color_subtle, color_accent } from '../styles';
+import { color_dark, color_subtle, mobile, tablet } from '../styles';
 import ProjectsArray from '../data/data';
 import Nav from './nav';
 import Contact from './contact';
@@ -84,7 +84,16 @@ const AboutButton = styled.button`
 			: ''};
 	position: absolute;
 	right: 2rem;
-	top: 50%;
+	bottom: 50%;
+
+	@media ${tablet} {
+		right: 1rem;
+		bottom: 40%;
+	}
+	@media ${mobile} {
+		right: 1rem;
+		bottom: 1rem;
+	}
 
 	&:focus {
 		outline: none;

@@ -5,21 +5,20 @@ import {
 	FlexFunc,
 	color_accent,
 	color_dark,
-	color_subtle
+	color_subtle,
+	mobile,
+	tablet
 } from '../styles';
 
 const Home = props => {
 	return (
 		<HomeContainer>
 			<HomeLeft aboutExpanded={props.aboutExpanded}>
-				<About
-					counter={props.counter}
-					aboutExpanded={props.aboutExpanded}
-				/>
-				<TaglineContainer aboutExpanded={props.aboutExpanded}>
+				<About counter={props.counter} aboutExpanded={props.aboutExpanded} />
+				<TaglineContainerLeft aboutExpanded={props.aboutExpanded}>
 					<Tagline>Full Stack Web Developer</Tagline>
 					<div>London, UK</div>
-				</TaglineContainer>
+				</TaglineContainerLeft>
 			</HomeLeft>
 			<HomeRight>
 				<HomeRightContent aboutExpanded={props.aboutExpanded}>
@@ -28,6 +27,10 @@ const Home = props => {
 						<br /> ABRA <br /> HART<span>.</span>
 					</h1>
 				</HomeRightContent>
+				<TaglineContainerRight aboutExpanded={props.aboutExpanded}>
+					<Tagline>Full Stack Web Developer</Tagline>
+					<div>London, UK</div>
+				</TaglineContainerRight>
 			</HomeRight>
 		</HomeContainer>
 	);
@@ -54,6 +57,10 @@ const HomeLeft = styled.div`
 	${FlexFunc('column', 'center', 'flex-end')};
 	font-size: 1.2rem;
 	transition: all 0.5s ease-out;
+
+	@media ${mobile} {
+		left: ${props => (props.aboutExpanded ? '0' : '-100%')};
+	}
 `;
 
 const HomeRight = styled.div`
@@ -79,15 +86,41 @@ const HomeRightContent = styled.div`
 			font-size: 7rem;
 		}
 	}
+	@media ${mobile} {
+		left: ${props => (props.aboutExpanded ? '100%' : '0')};
+	}
 `;
 
-const TaglineContainer = styled.div`
+const TaglineContainerLeft = styled.div`
 	padding-bottom: 8rem;
 	text-align: right;
 	position: absolute;
 	transition: all 0.5s ease-out;
 	bottom: 2rem;
 	right: ${props => (props.aboutExpanded ? '-25%' : '2rem')};
+
+	@media ${tablet} {
+		right: ${props => (props.aboutExpanded ? '-100%' : '2rem')};
+	}
+
+	@media ${mobile} {
+		display: none;
+	}
+
+`;
+const TaglineContainerRight = styled.div`
+	padding-bottom: 8rem;
+	text-align: right;
+	position: absolute;
+	transition: all 0.5s ease-out;
+	bottom: 2rem;
+	right: ${props => (props.aboutExpanded ? '-100%' : '2rem')};
+	color: ${color_dark};
+	display: none;
+
+	@media ${mobile} {
+		display: block;
+	}
 `;
 
 const Tagline = styled.div`

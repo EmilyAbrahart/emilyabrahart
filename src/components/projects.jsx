@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Project from './project';
-import { FlexFunc, color_dark, color_light } from '../styles';
+import { FlexFunc, color_dark, color_light, mobile, tablet } from '../styles';
 
 const Projects = props => {
 	return (
@@ -37,10 +37,21 @@ const ProjectsContainer = styled.div`
 		color: ${color_light};
 		letter-spacing: 0.5rem;
 	}
+	@media ${tablet} {
+		justify-content: center;
+	}
+
+	@media ${mobile} {
+		padding-top: 3rem;
+	}
 `;
 
 const ProjectsContentContainer = styled.div`
 	${FlexFunc('row', 'center', 'center')};
 	height: 80%;
 	width: 80%;
+
+	@media ${tablet} {
+		height: 50%;
+	}
 `;

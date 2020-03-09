@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { color_subtle, color_dark, FlexFunc } from '../styles';
+import { color_subtle, color_dark, FlexFunc, mobile, tablet } from '../styles';
 
 const Contact = props => {
 	return (
 		<ContactContainer counter={props.counter}>
 			<h2>CONTACT ME</h2>
-			<div>
+
 				<StyledForm
 					action="https://formsubmit.co/emilyabrahart@gmail.com"
 					method="POST"
@@ -25,7 +25,7 @@ const Contact = props => {
 					</FieldContainer>
 					<FormButton type="submit">Submit</FormButton>
 				</StyledForm>
-			</div>
+
 		</ContactContainer>
 	);
 };
@@ -44,9 +44,17 @@ const ContactContainer = styled.div`
 	h2 {
 		letter-spacing: 0.5rem;
 	}
+
+	@media ${tablet} {
+		${FlexFunc('column', 'center', 'center')}
+	}
 `;
+
 const StyledForm = styled.form`
 	width: 400px;
+	@media ${mobile} {
+		width: 90%;
+	}
 `;
 
 const FieldContainer = styled.div`
