@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import Swipe from 'react-easy-swipe';
 import { color_subtle, color_dark, FlexFunc, mobile, tablet } from '../styles';
 
 const Contact = props => {
 	return (
-		<ContactContainer counter={props.counter}>
-			<h2>CONTACT ME</h2>
+		<Swipe onSwipeDown={props.onSwipeDown}>
+			<ContactContainer counter={props.counter}>
+				<h2>CONTACT ME</h2>
 
 				<StyledForm
 					action="https://formsubmit.co/emilyabrahart@gmail.com"
@@ -25,8 +27,8 @@ const Contact = props => {
 					</FieldContainer>
 					<FormButton type="submit">Submit</FormButton>
 				</StyledForm>
-
-		</ContactContainer>
+			</ContactContainer>
+		</Swipe>
 	);
 };
 

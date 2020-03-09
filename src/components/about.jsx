@@ -77,7 +77,7 @@ ${FlexFunc('column', 'space-evenly', 'center')}
   width: 100%;
   color: ${color_subtle};
 	position: relative;
-	overflow-y: hidden;
+	overflow: hidden;
 	/* a {
 		position: absolute;
 		top: 50%;
@@ -122,6 +122,7 @@ const AboutContent = styled.div`
 		line-height: 1rem;
 		${FlexFunc('column', 'space-evenly', 'center')}
 		left: 0;
+		opacity: 100%;
 
 		p {
 			font-size: 0.8rem;

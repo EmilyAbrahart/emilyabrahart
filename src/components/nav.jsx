@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { faFile } from '@fortawesome/free-solid-svg-icons';
+// import { faFile } from '@fortawesome/free-solid-svg-icons';
 import { FlexFunc, color_dark, color_accent, color_subtle, mobile } from '../styles';
 
 const Nav = props => {
@@ -19,9 +19,9 @@ const Nav = props => {
 				>
 					<FontAwesomeIcon icon={faLinkedin} />
 				</SocialLink>
-				<SocialLink href="#">
+				{/* <SocialLink href="#">
 					<FontAwesomeIcon icon={faFile} />
-				</SocialLink>
+				</SocialLink> */}
 			</LinkContainer>
 		</NavContainer>
 	);

@@ -5,7 +5,7 @@ import Projects from './projects';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import { color_dark, color_subtle, mobile, tablet } from '../styles';
-import ProjectsArray from '../data/data';
+
 import Nav from './nav';
 import Contact from './contact';
 
@@ -35,7 +35,25 @@ const SiteContent = () => {
 		stepCounter();
 	};
 
-	const [projects, setProjects] = useState(ProjectsArray);
+	const incrementCounter = () => {
+		if (counter < 4) {
+			setNextCounter((counter += 1));
+		}
+	};
+
+	const decrementCounter = () => {
+		if (counter > 1) {
+			setNextCounter((counter -= 1));
+		}
+	};
+
+	const onSwipeUp = () => {
+		incrementCounter();
+	};
+
+	const onSwipeDown = () => {
+		decrementCounter();
+	};
 
 	return (
 		<SiteContentContainer>
@@ -43,9 +61,19 @@ const SiteContent = () => {
 				<Nav counter={counter} />
 			</NavContainer>
 
-			<Home counter={counter} aboutExpanded={aboutExpanded} />
-			<Projects counter={counter} projects={projects} />
-			<Contact counter={counter} />
+			<Home
+				counter={counter}
+				setAboutExpanded={setAboutExpanded}
+				aboutExpanded={aboutExpanded}
+				incrementCounter={incrementCounter}
+				decrementCounter={decrementCounter}
+			/>
+			<Projects
+				counter={counter}
+				onSwipeUp={onSwipeUp}
+				onSwipeDown={onSwipeDown}
+			/>
+			<Contact counter={counter} onSwipeDown={onSwipeDown} />
 			<AboutButton
 				counter={counter}
 				incrementing={incrementing}
@@ -63,7 +91,7 @@ const SiteContentContainer = styled.div`
 	width: 100%;
 	height: 100%;
 	position: relative;
-	overflow-y: hidden;
+	overflow: hidden;
 `;
 
 const AboutButton = styled.button`
@@ -77,7 +105,7 @@ const AboutButton = styled.button`
 	transform: ${props =>
 		(props.counter === 2 || props.counter === 3) && props.incrementing
 			? `rotate(90deg)`
-			: props.counter == 4 || (props.counter === 3 && !props.incrementing)
+			: props.counter === 4 || (props.counter === 3 && !props.incrementing)
 			? `rotate(270deg)`
 			: props.counter === 2 || !props.incrementing
 			? `rotate(180deg)`
@@ -91,8 +119,7 @@ const AboutButton = styled.button`
 		bottom: 40%;
 	}
 	@media ${mobile} {
-		right: 1rem;
-		bottom: 1rem;
+		display: none;
 	}
 
 	&:focus {

@@ -18,8 +18,10 @@ const AppContainer = styled.div`
 	height: 100vh;
 	${FlexFunc('column', 'center', 'center')}
 	padding: 2rem;
+	overflow: hidden;
 
 	@media ${mobile} {
+		width: 100vw;
 		padding: 0;
 	}
 `;
