@@ -116,7 +116,7 @@ const AboutButton = styled.button`
 
 	@media ${tablet} {
 		right: 1rem;
-		bottom: 40%;
+		bottom: 1rem;
 	}
 	@media ${mobile} {
 		display: none;

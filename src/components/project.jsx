@@ -5,7 +5,8 @@ import {
 	color_subtle,
 	color_subtle_fade,
 	color_dark,
-	color_dark_fade
+	color_dark_fade,
+	mobile
 } from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +21,6 @@ const Project = props => {
 				<img src={props.img} alt={props.name} draggable="false" />
 			</ProjectImg>
 			<ProjectContentContainer id={props.id} infoVisible={infoVisible}>
-				<h3>{props.name}</h3>
 				<p>{props.description}</p>
 				<TechnologyContainer>
 					{props.technologies.map(t => {
@@ -67,6 +67,10 @@ const ProjectContainer = styled.div`
 	box-sizing: border-box;
 	left: ${props =>
 		props.id > props.active ? '100%' : props.id < props.active ? '-100%' : '0'};
+	@media ${mobile} {
+		width: 100%;
+		height: auto;
+	}
 `;
 
 const ProjectImg = styled.div`
@@ -76,6 +80,10 @@ const ProjectImg = styled.div`
 
 	img {
 		height: 100%;
+		@media ${mobile} {
+			width: 100%;
+			height: auto;
+		}
 	}
 `;
 
@@ -144,13 +152,14 @@ const InfoButton = styled(ProjectButton)`
 `;
 
 const TechnologyContainer = styled.div`
-	${FlexFunc('row', 'space-between', 'center')}
+	${FlexFunc('row', 'flex-start', 'center')}
 	flex-wrap: wrap;
+	align-content: flex-start;
 `;
 
 const Technology = styled.div`
 	background-color: ${color_dark};
 	padding: 0.5rem 1rem;
-	margin: 0 0.25rem;
+	margin: 0.25rem;
 	border: 1px solid ${color_subtle_fade};
 `;

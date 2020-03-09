@@ -35,19 +35,26 @@ const Projects = props => {
 		}
 	};
 
-	const onSwipeLeft = () => {
-		incrementActive();
-	};
+	// const onSwipeLeft = () => {
+	// 	incrementActive();
+	// };
 
-	const onSwipeRight = () => {
-		decrementActive();
-	};
+	// const onSwipeRight = () => {
+	// 	decrementActive();
+	// };
 
 	return (
 		<Swipe onSwipeUp={props.onSwipeUp} onSwipeDown={props.onSwipeDown}>
 			<ProjectsContainer counter={props.counter}>
 				<h2>PROJECTS</h2>
-				<ProjectsFrame>
+
+				<ProjectsContentContainer>
+					{projects.map(project => {
+						return <Project active={active} key={project.id} {...project} />;
+					})}
+				</ProjectsContentContainer>
+
+				<DotContainer>
 					<LeftArrow
 						active={active}
 						length={length}
@@ -55,19 +62,13 @@ const Projects = props => {
 					>
 						<FontAwesomeIcon icon={faChevronLeft} />
 					</LeftArrow>
-					<Swipe
-						onSwipeLeft={onSwipeLeft}
-						onSwipeRight={onSwipeRight}
-						allowMouseEvents={true}
-					>
-						<ProjectsContentContainer>
-							{projects.map(project => {
-								return (
-									<Project active={active} key={project.id} {...project} />
-								);
-							})}
-						</ProjectsContentContainer>
-					</Swipe>
+					{projects.map(project => {
+						return (
+							<Dot key={project.id} id={project.id} active={active}>
+								<FontAwesomeIcon icon={faCircle} />
+							</Dot>
+						);
+					})}
 					<RightArrow
 						active={active}
 						length={length}
@@ -77,16 +78,6 @@ const Projects = props => {
 					>
 						<FontAwesomeIcon icon={faChevronRight} />
 					</RightArrow>
-				</ProjectsFrame>
-
-				<DotContainer>
-					{projects.map(project => {
-						return (
-							<Dot key={project.id} id={project.id} active={active}>
-								<FontAwesomeIcon icon={faCircle} />
-							</Dot>
-						);
-					})}
 				</DotContainer>
 			</ProjectsContainer>
 		</Swipe>
@@ -125,14 +116,13 @@ const ProjectsContentContainer = styled.div`
 	position: relative;
 	overflow: hidden;
 
-	@media ${tablet} {
-		height: 50%;
+	@media ${mobile} {
+		width: 100%;
 	}
 `;
-const ProjectsFrame = styled.div`
-	position: relative;
-`;
+
 const DotContainer = styled.div`
+	position: relative;
 	${FlexFunc('row', 'center', 'center')};
 	font-size: 0.7rem;
 	padding-top: 0.5rem;
@@ -140,13 +130,13 @@ const DotContainer = styled.div`
 const Dot = styled.div`
 	color: ${props =>
 		props.id === props.active ? color_subtle : color_subtle_fade};
-	height: 100%;
 	padding: 0.5rem;
 `;
 
 const Arrows = styled.div`
 	color: ${color_subtle_fade};
 	font-size: 2rem;
+	padding: 0 1rem;
 
 	&:hover {
 		color: ${color_subtle};
@@ -154,15 +144,9 @@ const Arrows = styled.div`
 	}
 `;
 const LeftArrow = styled(Arrows)`
-	position: absolute;
-	top: 50%;
-	left: -3rem;
-	display: ${props => (props.active > 1 ? 'block' : 'none')};
+	opacity: ${props => (props.active > 1 ? '100%' : '0')};
 `;
 
 const RightArrow = styled(Arrows)`
-	position: absolute;
-	top: 50%;
-	right: -3rem;
-	display: ${props => (props.active < props.length ? 'block' : 'none')};
+	opacity: ${props => (props.active < props.length ? '100%' : '0')};
 `;

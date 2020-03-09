@@ -1,7 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faReact, faJs, faNodeJs } from '@fortawesome/free-brands-svg-icons';
+import {
+	faReact,
+	faJs,
+	faNodeJs,
+	faPython
+} from '@fortawesome/free-brands-svg-icons';
 import photo from '../img/self-photo.jpg';
 import {
 	FlexFunc,
@@ -11,7 +16,6 @@ import {
 	tablet
 } from '../styles';
 import { Icon } from '@iconify/react';
-import bxlLess from '@iconify/icons-bx/bxl-less';
 import bxlRedux from '@iconify/icons-bx/bxl-redux';
 import styledComponents from '@iconify/icons-simple-icons/styled-components';
 
@@ -55,10 +59,10 @@ const About = props => {
 							<FontAwesomeIcon icon={faNodeJs} />
 						</SkillDiv>
 						<SkillDiv>
-							<Icon icon={styledComponents} />
+							<FontAwesomeIcon icon={faPython} />
 						</SkillDiv>
 						<SkillDiv>
-							<Icon icon={bxlLess} />
+							<Icon icon={styledComponents} />
 						</SkillDiv>
 					</SkillsContainer>
 				</AboutSection>
