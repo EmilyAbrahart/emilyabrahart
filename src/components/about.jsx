@@ -106,6 +106,9 @@ const AboutContent = styled.div`
 		width: 100px;
 		border-radius: 50%;
 		border: 2px solid ${color_subtle};
+		@media only screen and (max-device-height: 800px) {
+			display: none;
+		}
 	}
 
 	p {
@@ -114,6 +117,13 @@ const AboutContent = styled.div`
 
 	h2 {
 		letter-spacing: 0.5rem;
+	}
+
+	@media only screen and (max-device-height: 800px) {
+		padding: 0;
+		width: 100%;
+		margin: 0;
+		left: 0;
 	}
 
 	@media ${tablet} {

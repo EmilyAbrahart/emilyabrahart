@@ -23,10 +23,13 @@ const AppContainer = styled.div`
 	padding: 2rem;
 	overflow: hidden;
 
-
 	@media ${mobile} {
 		width: 100vw;
 		padding: 0;
 		overscroll-behavior: none;
+	}
+
+	@media only screen and (max-device-height: 800px) {
+		padding: 0;
 	}
 `;

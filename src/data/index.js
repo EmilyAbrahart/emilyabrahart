@@ -20,7 +20,7 @@ const ProjectsArray = [
 		id: 2,
 		name: "BEING BEYONCÉ'S ASSISTANT",
 		img: 'https://i.gyazo.com/3bed37b2effe51b7d8562bc4ace4fec7.png',
-		ghlink: 'https://github.com/Online-Game-CS/cs-bw1-frontend2',
+		ghlink: 'https://github.com/Online-Game-CS/cs-bw1-frontend',
 		sitelink: 'https://beyonces-assistant.netlify.com',
 		description:
 			'A web based game in which the player aims to successfully complete all of the challenges to win.',
