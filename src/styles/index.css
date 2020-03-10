@@ -4,6 +4,7 @@ html {
 	-webkit-text-size-adjust: 100%;
 }
 body {
+	overscroll-behavior: none;
 	margin: 0;
 	background: #ffffff;
 	-webkit-font-smoothing: antialiased;
