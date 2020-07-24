@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 // import { faFile } from '@fortawesome/free-solid-svg-icons';
-import { FlexFunc, color_dark, color_accent, color_subtle, mobile } from '../styles';
+import { FlexFunc, color_dark, color_pink, color_subtle, mobile } from '../styles';
 
 const Nav = props => {
 	return (
@@ -65,7 +65,7 @@ const SocialLink = styled.a`
 	margin-left: 1rem;
 
 	&:hover {
-		color: ${color_accent};
+		color: ${color_pink};
 	}
 `;
 export default Nav;

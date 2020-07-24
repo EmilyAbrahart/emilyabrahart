@@ -5,28 +5,18 @@ import {
 	faReact,
 	faJs,
 	faNodeJs,
-	faPython
+	faPython,
 } from '@fortawesome/free-brands-svg-icons';
 import photo from '../img/self-photo.jpg';
-import {
-	FlexFunc,
-	color_accent,
-	color_subtle,
-	mobile,
-	tablet
-} from '../styles';
+import { FlexFunc, color_pink, color_subtle, mobile, tablet } from '../styles';
 import { Icon } from '@iconify/react';
 import bxlRedux from '@iconify/icons-bx/bxl-redux';
 import styledComponents from '@iconify/icons-simple-icons/styled-components';
 
-const About = props => {
+const About = () => {
 	return (
 		<AboutContainer>
-			<AboutContent
-				counter={props.counter}
-				aboutExpanded={props.aboutExpanded}
-				projectsExpanded={props.projectsExpanded}
-			>
+			<AboutContent>
 				<img src={photo} alt="Emily Abrahart" />
 
 				<AboutSection>
@@ -75,32 +65,29 @@ const About = props => {
 export default About;
 
 const AboutContainer = styled.div`
-${FlexFunc('column', 'space-evenly', 'center')}
-  background: ${color_accent};
-  height: 100%;
-  width: 100%;
-  color: ${color_subtle};
+	${FlexFunc('column', 'space-evenly', 'center')}
+
+	background: rgb(255,95,109);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 95, 109, 1) 66%,
+		rgba(255, 195, 113, 1) 100%
+	);
+	height: 100%;
+	width: 100%;
+	color: ${color_subtle};
 	position: relative;
-	overflow: hidden;
-	/* a {
-		position: absolute;
-		top: 50%;
-		right: 2rem;
-	} */
+	overflow-x: hidden;
 `;
 
 const AboutContent = styled.div`
 	${FlexFunc('column', 'center', 'center')};
 	height: 100%;
-	width: 60%;
+	width: 100%;
 	max-width: 1024px;
 	padding: 3rem;
 	line-height: 1.5rem;
-	position: absolute;
-	transition: all 0.5s ease-out;
-	left: ${props => (props.aboutExpanded ? '20%' : '0')};
-	top: ${props => (props.counter > 2 ? '-100%' : '0')};
-	opacity: ${props => (props.aboutExpanded ? '100%' : '0')};
+
 
 	img {
 		width: 100px;
@@ -117,41 +104,9 @@ const AboutContent = styled.div`
 
 	h2 {
 		letter-spacing: 0.5rem;
-	}
+	}`;
 
-	@media only screen and (max-device-height: 800px) {
-		padding: 0;
-		width: 100%;
-		margin: 0;
-		left: 0;
-	}
 
-	@media ${tablet} {
-		padding: 1rem;
-	}
-
-	@media ${mobile} {
-		padding: 0.6rem;
-		width: 100%;
-		line-height: 1rem;
-		${FlexFunc('column', 'space-evenly', 'center')}
-		left: 0;
-		opacity: 100%;
-
-		p {
-			font-size: 0.8rem;
-			margin: 1rem 0;
-
-			&.examples {
-				display: none;
-			}
-		}
-
-		img {
-			display: none;
-		}
-	}
-`;
 const AboutSection = styled.section`
 	text-align: center;
 	padding: 1rem 0;

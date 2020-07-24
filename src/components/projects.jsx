@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Swipe from 'react-easy-swipe';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faChevronRight,
 	faChevronLeft,
-	faCircle
+	faCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import Project from './project';
 import ProjectsArray from '../data';
@@ -16,10 +15,10 @@ import {
 	mobile,
 	tablet,
 	color_subtle,
-	color_subtle_fade
+	color_subtle_fade,
 } from '../styles';
 
-const Projects = props => {
+const Projects = (props) => {
 	const [projects, setProjects] = useState(ProjectsArray);
 	let [active, setActive] = useState(1);
 	const length = projects.length;
@@ -35,52 +34,16 @@ const Projects = props => {
 		}
 	};
 
-	// const onSwipeLeft = () => {
-	// 	incrementActive();
-	// };
-
-	// const onSwipeRight = () => {
-	// 	decrementActive();
-	// };
-
 	return (
-		<Swipe onSwipeUp={props.onSwipeUp} onSwipeDown={props.onSwipeDown}>
-			<ProjectsContainer counter={props.counter}>
-				<h2>PROJECTS</h2>
+		<ProjectsContainer >
+			<h2>PROJECTS</h2>
 
-				<ProjectsContentContainer>
-					{projects.map(project => {
-						return <Project active={active} key={project.id} {...project} />;
-					})}
-				</ProjectsContentContainer>
-
-				<DotContainer>
-					<LeftArrow
-						active={active}
-						length={length}
-						onClick={() => decrementActive()}
-					>
-						<FontAwesomeIcon icon={faChevronLeft} />
-					</LeftArrow>
-					{projects.map(project => {
-						return (
-							<Dot key={project.id} id={project.id} active={active}>
-								<FontAwesomeIcon icon={faCircle} />
-							</Dot>
-						);
-					})}
-					<RightArrow
-						active={active}
-						length={length}
-						onClick={() => {
-							incrementActive();
-						}}
-					>
-						<FontAwesomeIcon icon={faChevronRight} />
-					</RightArrow>
-				</DotContainer>
-			</ProjectsContainer>
-		</Swipe>
+			<ProjectsContentContainer>
+				{projects.map((project) => {
+					return <Project active={active} key={project.id} {...project} />;
+				})}
+			</ProjectsContentContainer>
+		</ProjectsContainer>
 	);
 };
 
@@ -91,62 +54,22 @@ const ProjectsContainer = styled.div`
 	height: 100%;
 	width: 100%;
 	letter-spacing: 2px;
-	position: absolute;
+
 	background: ${color_dark};
-	top: ${props =>
-		props.counter === 3 ? '0' : props.counter > 3 ? '-100%' : '100%'};
-	transition: all 0.5s ease-out;
+
 	h2 {
 		color: ${color_light};
 		letter-spacing: 0.5rem;
 	}
-	@media ${tablet} {
-		justify-content: center;
-	}
 
-	@media ${mobile} {
-		padding-top: 3rem;
-	}
 `;
 
 const ProjectsContentContainer = styled.div`
 	${FlexFunc('row', 'center', 'center')};
-	height: 400px;
-	width: 600px;
-	position: relative;
-	overflow: hidden;
+	flex-wrap: wrap;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
 
-	@media ${mobile} {
-		width: 100%;
-	}
 `;
 
-const DotContainer = styled.div`
-	position: relative;
-	${FlexFunc('row', 'center', 'center')};
-	font-size: 0.7rem;
-	padding-top: 0.5rem;
-`;
-const Dot = styled.div`
-	color: ${props =>
-		props.id === props.active ? color_subtle : color_subtle_fade};
-	padding: 0.5rem;
-`;
-
-const Arrows = styled.div`
-	color: ${color_subtle_fade};
-	font-size: 2rem;
-	padding: 0 1rem;
-
-	&:hover {
-		color: ${color_subtle};
-		cursor: pointer;
-	}
-`;
-const LeftArrow = styled(Arrows)`
-	opacity: ${props => (props.active > 1 ? '100%' : '0')};
-`;
-
-const RightArrow = styled(Arrows)`
-	opacity: ${props => (props.active < props.length ? '100%' : '0')};
-`;
