@@ -1,17 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import Swipe from 'react-easy-swipe';
-import { color_subtle, color_dark, FlexFunc, mobile, tablet } from '../styles';
+import {
+	color_subtle,
+	color_dark,
+	FlexFunc,
+	mobile,
+	tablet,
+	PageSection,
+	FormSVGContainer,
+	FormSVGContainer2,
+	ProjectsSVGContainer,
+} from '../styles';
 
-const Contact = (props) => {
+const Contact = () => {
 	return (
-		<ContactContainer counter={props.counter}>
-			<h2>CONTACT ME</h2>
-
+		<ContactContainer>
+			<ProjectsSVGContainer />
 			<StyledForm
 				action="https://formsubmit.co/emilyabrahart@gmail.com"
 				method="POST"
 			>
+				<h2>CONTACT ME</h2>
+				<FormSVGContainer />
+				<FormSVGContainer2 />
 				<FieldContainer>
 					<div className="label">NAME</div>
 					<input type="text" name="name" />
@@ -32,24 +43,25 @@ const Contact = (props) => {
 
 export default Contact;
 
-const ContactContainer = styled.div`
-	${FlexFunc('column', 'space-evenly', 'center')}
-	height: 100%;
-	width: 100%;
+const ContactContainer = styled(PageSection)`
 	background-color: ${color_subtle};
-	transition: all 0.5s ease-out;
 	color: ${color_dark};
-	h2 {
-		letter-spacing: 0.5rem;
-	}
-
-	@media ${tablet} {
-		${FlexFunc('column', 'center', 'center')}
-	}
+	justify-content: space-between;
 `;
 
 const StyledForm = styled.form`
 	width: 400px;
+	min-height: 100vh;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: 'space-evenly';
+	align-items: 'center';
+	h2 {
+		letter-spacing: 0.5rem;
+		z-index: 5000;
+		text-align: center;
+	}
 	@media ${mobile} {
 		width: 90%;
 	}
@@ -58,6 +70,7 @@ const StyledForm = styled.form`
 const FieldContainer = styled.div`
 	width: 100%;
 	padding: 1rem 0;
+	z-index: 5000;
 
 	.label {
 		letter-spacing: 0.5rem;

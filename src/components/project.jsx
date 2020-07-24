@@ -11,7 +11,7 @@ import {
 
 const Project = (props) => {
 	return (
-		<ProjectContainer active={props.active} id={props.id}>
+		<ProjectContainer>
 			<HeaderContainer>{props.name.toUpperCase()}</HeaderContainer>
 			<ProjectImg>
 				<img src={props.img} alt={props.name} draggable="false" />
@@ -24,13 +24,14 @@ export default Project;
 
 const ProjectContainer = styled.div`
 	display: flex;
-	${FlexFunc('row', 'center', 'center')};
+	${FlexFunc('column', 'center', 'center')};
 	background: ${color_dark};
 	width: 400px;
 	height: 400px;
 	margin: 1rem;
 	overflow: hidden;
 	box-sizing: border-box;
+	border: 1px solid red;
 `;
 
 const ProjectImg = styled.div`

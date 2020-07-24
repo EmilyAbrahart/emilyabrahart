@@ -44,7 +44,7 @@ export default LavaLamp;
 
 const LavaContainer = styled.div`
 	position: absolute;
-  top: 0;
+	top: 0;
 	width: 100%;
 	height: 80%;
 	.lamp {
@@ -127,15 +127,7 @@ const LavaContainer = styled.div`
 		animation: wobble 6s ease-in-out alternate infinite,
 			blob-three ease-in-out 16s infinite;
 	}
-	.blob:nth-child(4) {
-		width: 235px;
-		height: 235px;
-		bottom: -19%;
-		left: 30%;
 
-		animation: wobble 7s ease-in-out alternate infinite,
-			blob-four ease-in-out 12s infinite;
-	}
 	.blob:nth-child(4) {
 		width: 235px;
 		height: 235px;
