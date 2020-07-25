@@ -8,8 +8,15 @@ import {
 	ProjectsSVGContainer,
 } from '../styles';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { Waypoint } from 'react-waypoint';
 
-const Contact = () => {
+const Contact = ({ setNavBackground }) => {
+	const handleEnter = () => {
+		setNavBackground(true);
+	};
+	const handleLeave = () => {
+		setNavBackground(false);
+	};
 	return (
 		<ContactContainer>
 			<ProjectsSVGContainer />
@@ -18,12 +25,13 @@ const Contact = () => {
 				action="https://formsubmit.co/emilyabrahart@gmail.com"
 				method="POST"
 			>
+				<Waypoint onEnter={() => handleEnter()} onLeave={() => handleLeave()} />
 				<ScrollableAnchor id="contact">
 					<h2>CONTACT ME</h2>
 				</ScrollableAnchor>
 				<FieldContainer>
 					<div className="label">NAME</div>
-					<input type="text" name="name" required/>
+					<input type="text" name="name" required />
 				</FieldContainer>
 				<FieldContainer>
 					<div className="label">EMAIL</div>
@@ -31,7 +39,7 @@ const Contact = () => {
 				</FieldContainer>
 				<FieldContainer>
 					<div className="label">MESSAGE</div>
-					<textarea name="message" required/>
+					<textarea name="message" required />
 				</FieldContainer>
 				<FormButton type="submit">Submit</FormButton>
 			</StyledForm>
@@ -45,6 +53,7 @@ const ContactContainer = styled(PageSection)`
 	background-color: ${color_subtle};
 	color: ${color_dark};
 	justify-content: space-between;
+	padding-bottom: 3rem;
 `;
 
 const StyledForm = styled.form`
@@ -96,7 +105,11 @@ const FormButton = styled.button`
 
 	&:hover {
 		cursor: pointer;
-		color: ${color_dark};
-		background-color: ${color_subtle};
+		border: none;
+		background: linear-gradient(
+			90deg,
+			rgba(255, 95, 109, 1) 80%,
+			rgba(255, 195, 113, 1) 100%
+		);
 	}
 `;

@@ -109,6 +109,8 @@ const LavaContainer = styled.div`
 
 		animation: wobble 4s ease-in-out alternate infinite,
 			blob-one ease-in-out 13s infinite;
+		-webkit-animation: wobble 4s ease-in-out alternate infinite,
+			blob-one ease-in-out 13s infinite;
 	}
 	.blob:nth-child(2) {
 		width: 330px;
@@ -118,7 +120,11 @@ const LavaContainer = styled.div`
 
 		animation: wobble 5s ease-in-out alternate infinite,
 			blob-two ease-in-out 22s infinite;
+
+		-webkit-animation: wobble 5s ease-in-out alternate infinite,
+			blob-two ease-in-out 22s infinite;
 	}
+
 	.blob:nth-child(3) {
 		width: 150px;
 		height: 150px;
@@ -126,6 +132,8 @@ const LavaContainer = styled.div`
 		left: 34%;
 
 		animation: wobble 6s ease-in-out alternate infinite,
+			blob-three ease-in-out 16s infinite;
+		-webkit-animation: wobble 6s ease-in-out alternate infinite,
 			blob-three ease-in-out 16s infinite;
 	}
 
@@ -136,6 +144,8 @@ const LavaContainer = styled.div`
 		left: 30%;
 		animation: wobble 8s ease-in-out alternate infinite,
 			blob-four ease-in-out 12s infinite;
+		-webkit-animation: wobble 8s ease-in-out alternate infinite,
+			blob-four ease-in-out 12s infinite;
 	}
 	.blob:nth-child(5) {
 		width: 55px;
@@ -144,6 +154,9 @@ const LavaContainer = styled.div`
 		left: 34%;
 
 		animation: wobble 9s ease-in-out alternate infinite,
+			blob-five ease-in-out 32s infinite;
+
+		-webkit-animation: wobble 9s ease-in-out alternate infinite,
 			blob-five ease-in-out 32s infinite;
 	}
 	.blob:nth-child(6) {
@@ -154,6 +167,8 @@ const LavaContainer = styled.div`
 
 		animation: wobble 10s ease-in-out alternate infinite,
 			blob-six ease-in-out 12s infinite;
+		-webkit-animation: wobble 10s ease-in-out alternate infinite,
+			blob-six ease-in-out 12s infinite;
 	}
 	.blob:nth-child(7) {
 		width: 435px;
@@ -163,6 +178,8 @@ const LavaContainer = styled.div`
 
 		animation: wobble 11s ease-in-out alternate infinite,
 			blob-seven ease-in-out 32s infinite;
+		-webkit-animation: wobble 11s ease-in-out alternate infinite,
+			blob-seven ease-in-out 32s infinite;
 	}
 	@keyframes blob-one {
 		0%,
@@ -171,6 +188,15 @@ const LavaContainer = styled.div`
 		}
 		50% {
 			transform: translatey(-700%);
+		}
+	}
+	@-webkit-keyframes blob-one {
+		0%,
+		100% {
+			-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-700%);
 		}
 	}
 
@@ -183,6 +209,15 @@ const LavaContainer = styled.div`
 			transform: translatey(-420%);
 		}
 	}
+	@-webkit-keyframes blob-two {
+		0%,
+		100% {
+			-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-420%);
+		}
+	}
 
 	@keyframes blob-three {
 		0%,
@@ -193,6 +228,18 @@ const LavaContainer = styled.div`
 			transform: translatey(-305%);
 		}
 	}
+
+	@-webkit-keyframes blob-three {
+		0%,
+		100% {
+			-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-305%);
+		}
+	}
+
+
 	@keyframes blob-four {
 		0%,
 		100% {
@@ -202,6 +249,18 @@ const LavaContainer = styled.div`
 			transform: translatey(-605%);
 		}
 	}
+
+	@-webkit-keyframes blob-four {
+		0%,
+		100% {
+			-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-605%);
+		}
+	}
+
+
 	@keyframes blob-five {
 		0%,
 		100% {
@@ -211,6 +270,17 @@ const LavaContainer = styled.div`
 			transform: translatey(-700%);
 		}
 	}
+
+	@-webkit-keyframes blob-five {
+		0%,
+		100% {
+		-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-700%);
+		}
+	}
+
 	@keyframes blob-six {
 		0%,
 		100% {
@@ -220,6 +290,16 @@ const LavaContainer = styled.div`
 			transform: translatey(-700%);
 		}
 	}
+	@-webkit-keyframes blob-six {
+		0%,
+		100% {
+			-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-700%);
+		}
+	}
+
 	@keyframes blob-seven {
 		0%,
 		100% {
@@ -227,6 +307,16 @@ const LavaContainer = styled.div`
 		}
 		50% {
 			transform: translatey(-300%);
+		}
+	}
+
+	@-webkit-keyframes blob-seven {
+		0%,
+		100% {
+			-webkit-transform: translatey(0);
+		}
+		50% {
+			-webkit-transform: translatey(-300%);
 		}
 	}
 

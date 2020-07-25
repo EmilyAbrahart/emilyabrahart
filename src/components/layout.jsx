@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FlexFunc, mobile } from '../styles';
 import Home from './home';
@@ -6,15 +6,20 @@ import About from './about';
 import Projects from './projects';
 import Contact from './contact';
 import Nav from './nav';
+import Footer from './footer';
 
 const Layout = () => {
+
+	const [navBackground, setNavBackground] = useState(false);
+
 	return (
 		<AppContainer>
-			<Nav />
+			<Nav navBackground={navBackground}/>
 			<Home />
 			<About />
-			<Projects />
-			<Contact />
+			<Projects/>
+			<Contact setNavBackground={setNavBackground}/>
+			<Footer />
 		</AppContainer>
 	);
 };
@@ -23,6 +28,7 @@ export default Layout;
 
 const AppContainer = styled.div`
 	width: 100%;
+	min-height: 100%;
 	${FlexFunc('column', 'center', 'center')}
 
 
