@@ -1,59 +1,64 @@
 import React from 'react';
 import styled from 'styled-components';
-import Swipe from 'react-easy-swipe';
-import { color_subtle, color_dark, FlexFunc, mobile, tablet } from '../styles';
+import {
+	color_subtle,
+	color_dark,
+	mobile,
+	PageSection,
+	ProjectsSVGContainer,
+} from '../styles';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
-const Contact = props => {
+const Contact = () => {
 	return (
-		<Swipe onSwipeDown={props.onSwipeDown}>
-			<ContactContainer counter={props.counter}>
-				<h2>CONTACT ME</h2>
-
-				<StyledForm
-					action="https://formsubmit.co/emilyabrahart@gmail.com"
-					method="POST"
-				>
-					<FieldContainer>
-						<div className="label">NAME</div>
-						<input type="text" name="name" />
-					</FieldContainer>
-					<FieldContainer>
-						<div className="label">EMAIL</div>
-						<input type="email" name="email" />
-					</FieldContainer>
-					<FieldContainer>
-						<div className="label">MESSAGE</div>
-						<textarea name="message" />
-					</FieldContainer>
-					<FormButton type="submit">Submit</FormButton>
-				</StyledForm>
-			</ContactContainer>
-		</Swipe>
+		<ContactContainer>
+			<ProjectsSVGContainer />
+			<StyledForm
+				name="contactForm"
+				action="https://formsubmit.co/emilyabrahart@gmail.com"
+				method="POST"
+			>
+				<ScrollableAnchor id="contact">
+					<h2>CONTACT ME</h2>
+				</ScrollableAnchor>
+				<FieldContainer>
+					<div className="label">NAME</div>
+					<input type="text" name="name" required/>
+				</FieldContainer>
+				<FieldContainer>
+					<div className="label">EMAIL</div>
+					<input type="email" name="email" required />
+				</FieldContainer>
+				<FieldContainer>
+					<div className="label">MESSAGE</div>
+					<textarea name="message" required/>
+				</FieldContainer>
+				<FormButton type="submit">Submit</FormButton>
+			</StyledForm>
+		</ContactContainer>
 	);
 };
 
 export default Contact;
 
-const ContactContainer = styled.div`
-	${FlexFunc('column', 'space-evenly', 'center')}
-	position: absolute;
-	top: ${props => (props.counter === 4 ? '0' : '100%')};
-	height: 100%;
-	width: 100%;
+const ContactContainer = styled(PageSection)`
 	background-color: ${color_subtle};
-	transition: all 0.5s ease-out;
 	color: ${color_dark};
-	h2 {
-		letter-spacing: 0.5rem;
-	}
-
-	@media ${tablet} {
-		${FlexFunc('column', 'center', 'center')}
-	}
+	justify-content: space-between;
 `;
 
 const StyledForm = styled.form`
 	width: 400px;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: 'space-evenly';
+	align-items: 'center';
+	h2 {
+		letter-spacing: 0.5rem;
+		z-index: 5000;
+		text-align: center;
+	}
 	@media ${mobile} {
 		width: 90%;
 	}
@@ -62,6 +67,7 @@ const StyledForm = styled.form`
 const FieldContainer = styled.div`
 	width: 100%;
 	padding: 1rem 0;
+	z-index: 5000;
 
 	.label {
 		letter-spacing: 0.5rem;

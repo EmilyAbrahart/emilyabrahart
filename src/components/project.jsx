@@ -3,49 +3,47 @@ import styled from 'styled-components';
 import {
 	FlexFunc,
 	color_subtle,
-	color_subtle_fade,
 	color_dark,
-	color_dark_fade,
-	mobile
+	color_pink,
+	mobile,
 } from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlobeAmericas } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-const Project = props => {
+const Project = (props) => {
 	const [infoVisible, setInfoVisible] = useState(false);
 	return (
-		<ProjectContainer active={props.active} id={props.id}>
+		<ProjectContainer>
 			<HeaderContainer>{props.name.toUpperCase()}</HeaderContainer>
-			<ProjectImg>
+			<ProjectImg
+				onMouseEnter={() => setInfoVisible(true)}
+				onMouseLeave={() => setInfoVisible(false)}
+			>
+				<HoverDiv infoVisible={infoVisible}>
+					<TechnologiesDiv infoVisible={infoVisible}>
+						{props.technologies.map((t) => {
+							return <Technology key={t}>{t}</Technology>;
+						})}
+					</TechnologiesDiv>
+
+					<ProjectLinkContainer infoVisible={infoVisible}>
+						<ProjectLink href={props.sitelink} target="_blank">
+							<ProjectButton>
+								<FontAwesomeIcon icon={faGlobeAmericas} />
+							</ProjectButton>
+						</ProjectLink>
+
+						<ProjectLink href={props.ghlink} target="_blank">
+							<ProjectButton>
+								<FontAwesomeIcon icon={faGithub} />
+							</ProjectButton>
+						</ProjectLink>
+					</ProjectLinkContainer>
+				</HoverDiv>
+
 				<img src={props.img} alt={props.name} draggable="false" />
 			</ProjectImg>
-			<ProjectContentContainer id={props.id} infoVisible={infoVisible}>
-				<p>{props.description}</p>
-				<TechnologyContainer>
-					{props.technologies.map(t => {
-						return <Technology key={t}>{t}</Technology>;
-					})}
-				</TechnologyContainer>
-			</ProjectContentContainer>
-			<ProjectButtonContainer>
-				<InfoButton
-					infoVisible={infoVisible}
-					onClick={() => setInfoVisible(!infoVisible)}
-				>
-					INFO
-				</InfoButton>
-				<ProjectLink href={props.sitelink}>
-					<ProjectButton>
-						<FontAwesomeIcon icon={faGlobeAmericas} />
-					</ProjectButton>
-				</ProjectLink>
-				<ProjectLink href={props.ghlink}>
-					<ProjectButton>
-						<FontAwesomeIcon icon={faGithub} />
-					</ProjectButton>
-				</ProjectLink>
-			</ProjectButtonContainer>
 		</ProjectContainer>
 	);
 };
@@ -53,33 +51,23 @@ const Project = props => {
 export default Project;
 
 const ProjectContainer = styled.div`
-	border-bottom: none;
 	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
+	${FlexFunc('column', 'center', 'center')};
 	background: ${color_dark};
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	transition: all 0.5s ease-out;
+	margin: 1rem;
+	width: 800px;
+	max-width: 90vw;
 	overflow: hidden;
-	box-sizing: border-box;
-	left: ${props =>
-		props.id > props.active ? '100%' : props.id < props.active ? '-100%' : '0'};
-	@media ${mobile} {
-		width: 100%;
-		height: auto;
-	}
 `;
 
 const ProjectImg = styled.div`
 	height: 100%;
 	width: 100%;
-	margin-bottom: 0;
+	position: relative;
 
 	img {
-		height: 100%;
+		margin-bottom: 0;
+		border: 2px solid white;
 		@media ${mobile} {
 			width: 100%;
 			height: auto;
@@ -87,79 +75,67 @@ const ProjectImg = styled.div`
 	}
 `;
 
-const ProjectContentContainer = styled.div`
+const HoverDiv = styled.div`
 	position: absolute;
+	top: 0;
+	left: 0;
 	height: 100%;
 	width: 100%;
-	transition: all 0.5s ease-out;
-	top: ${props => (props.infoVisible ? '0' : '100%')};
-	background: ${color_dark_fade};
-	${FlexFunc('column', 'center', 'center')}
-	word-wrap: normal;
-	color: ${color_subtle};
-	font-size: 0.7rem;
-	padding: 1rem;
-	user-select: none;
+	display: ${(props) => (props.infoVisible ? `block` : `none`)};
+	background: none;
 	overflow: hidden;
-	z-index: 3;
+
 `;
+
 const HeaderContainer = styled.div`
 	width: 100%;
 	background-color: ${color_dark};
+	margin-bottom: 1rem;
 	color: ${color_subtle};
 	text-align: center;
-	position: absolute;
-	top: 0;
-	padding: 0.5rem 0;
-	z-index: 6;
-`;
-const ProjectButtonContainer = styled.div`
-	background-color: ${color_subtle};
-	position: absolute;
-	bottom: 0;
-	${FlexFunc('row', 'space-between', 'center')}
-	width: 100%;
-	z-index: 5;
 `;
 
+const TechnologiesDiv = styled.div`
+	position: absolute;
+	bottom: 1rem;
+	left: 1rem;
+`;
+
+const Technology = styled.div`
+	border-radius: 4px;
+	background-color: ${color_pink};
+	text-align: center;
+	padding: 4px;
+	margin-top: 4px;
+	color: ${color_subtle};
+`;
+
+const ProjectLinkContainer = styled.div`
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+`;
 const ProjectLink = styled.a`
 	margin: 0;
 	padding: 0;
 	width: 50%;
+	background-color: ${color_pink};
+	color: ${color_subtle};
 `;
+
 const ProjectButton = styled.button`
 	width: 100%;
-	padding: 0.25rem 1rem;
-	font-size: 1rem;
+	font-size: 2rem;
 	cursor: pointer;
 	margin: 0;
-	border: none;
 	color: ${color_subtle};
-	background-color: ${color_dark};
+	background-color: ${color_pink};
 	outline: none;
-	border: 1px solid ${color_dark};
-	border-top: 1px solid ${color_dark_fade};
-	border-bottom: none;
-
+	border: 1px solid ${color_pink};
+	border-radius: 4px;
+	text-align: center;
+	padding: 4px;
+	margin-top: 4px;
 	&:hover {
-		background-color: ${color_dark_fade};
 	}
-`;
-
-const InfoButton = styled(ProjectButton)`
-	background-color: ${props =>
-		props.infoVisible ? color_dark_fade : color_dark};
-`;
-
-const TechnologyContainer = styled.div`
-	${FlexFunc('row', 'flex-start', 'center')}
-	flex-wrap: wrap;
-	align-content: flex-start;
-`;
-
-const Technology = styled.div`
-	background-color: ${color_dark};
-	padding: 0.5rem 1rem;
-	margin: 0.25rem;
-	border: 1px solid ${color_subtle_fade};
 `;

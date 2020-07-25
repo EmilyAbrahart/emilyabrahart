@@ -36,16 +36,6 @@ const ProjectsArray = [
 			'A weather app allowing you to search for a location and find the current & 5-day forecast for that area.',
 		technologies: ['React', 'Redux', 'Javascript']
 	},
-	{
-		id: 4,
-		name: 'PORTFOLIO',
-		img: 'https://i.gyazo.com/408fcb077e64e3e6262c4eb7afbc7f24.png',
-		ghlink: 'https://github.com/EmilyAbrahart/emilyabrahart',
-		sitelink: 'https://www.emilyabrahart.com/',
-		description:
-			'A fully responsive portfolio with a clean and simple design.',
-		technologies: ['React', 'Javascript', 'Styled Components']
-	}
 ];
 
 export default ProjectsArray;
