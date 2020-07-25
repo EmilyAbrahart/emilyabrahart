@@ -3,13 +3,8 @@ import styled from 'styled-components';
 import LavaLamp from '../utils/lava';
 import { FlexFunc, color_dark, mobile } from '../styles';
 import ScrollableAnchor from 'react-scrollable-anchor';
-import { Waypoint } from 'react-waypoint';
 
-const Home = ({ setNavVisible }) => {
-	const handleEnter = () => {
-		setNavVisible(false);
-	};
-
+const Home = () => {
 	return (
 		<HomeContainer>
 			<ScrollableAnchor id="home">
@@ -27,8 +22,7 @@ const Home = ({ setNavVisible }) => {
 				<div>London, UK</div>
 			</TaglineContainerRight>
 
-			<HomeBottom></HomeBottom>
-			<Waypoint onEnter={() => handleEnter()} />
+			<HomeBottom />
 		</HomeContainer>
 	);
 };

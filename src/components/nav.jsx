@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { goToAnchor } from 'react-scrollable-anchor';
-import {
-	FlexFunc,
-	color_dark,
-	color_pink,
-	color_subtle,
-	mobile,
-} from '../styles';
+import { FlexFunc, color_dark, color_subtle, mobile } from '../styles';
 
-const Nav = ({ navBackground, navVisible }) => {
+const Nav = () => {
+	const [menuVisible, setMenuVisible] = useState(false);
+
 	return (
-		<NavContainer navBackground={navBackground} navVisible={navVisible}>
-			<LinkContainer>
+		<NavContainer>
+			<NavBar>
 				<ShortcutButton onClick={() => goToAnchor('home')}>
 					<NavName>EMILY ABRAHART</NavName>
 				</ShortcutButton>
-			</LinkContainer>
-			<ShortcutContainer>
+				<MenuButton onClick={() => setMenuVisible(!menuVisible)}>
+					<FontAwesomeIcon icon={faBars} />
+				</MenuButton>
+			</NavBar>
+
+			<ShortcutContainer menuVisible={menuVisible}>
 				<ShortcutButton onClick={() => goToAnchor('about')}>
 					ABOUT
 				</ShortcutButton>
@@ -29,56 +29,70 @@ const Nav = ({ navBackground, navVisible }) => {
 				<ShortcutButton onClick={() => goToAnchor('contact')}>
 					CONTACT
 				</ShortcutButton>
-				<SocialLink href="https://github.com/EmilyAbrahart" target="_blank">
-					<FontAwesomeIcon icon={faGithub} />
-				</SocialLink>
+				<ShortcutButton>
+					<a href="https://github.com/EmilyAbrahart">GITHUB</a>
+				</ShortcutButton>
 			</ShortcutContainer>
 		</NavContainer>
 	);
 };
 
 const NavContainer = styled.nav`
-	justify-content: space-between;
-	align-items: baseline;
-	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
 	position: fixed;
 	width: 100%;
 	padding: 0.5rem 2rem;
-	top: 0rem;
-	left: 0rem;
+	top: 0;
+	bottom: auto;
 	z-index: 1000;
-	transition: all 0.5s ease-out;
 	color: ${color_subtle};
-	background: ${(props) => (props.navBackground ? color_dark : 'none')};
-	visibility: ${(props) => (props.navVisible ? 'visible' : 'hidden')};
+	background: ${color_dark};
+	display: flex;
 	@media ${mobile} {
-		display: none;
+		flex-direction: column;
+		bottom: 0;
+		top: auto;
 	}
+`;
+
+const NavBar = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
 `;
 
 const NavName = styled.div`
 	font-weight: bold;
 	letter-spacing: 2px;
-	color: ${(props) => (props.counter > 3 ? color_dark : color_subtle)};
-	transition: all 0.5s ease-out;
-`;
-const LinkContainer = styled.div`
-	${FlexFunc('row', 'space-evenly', 'center')}
-`;
-
-const SocialLink = styled.a`
-	font-size: 1.5rem;
-	padding: 0 0.5rem;
-	margin-left: 1rem;
-	color: ${color_subtle};
-
-	&:hover {
-		color: ${color_pink};
-	}
 `;
 
 const ShortcutContainer = styled.div`
-	${FlexFunc('row', 'space-evenly', 'flex-end')}
+	${FlexFunc('row', 'flex-start', 'center')}
+
+	transition: all 0.5s linear;
+
+	@media ${mobile} {
+		max-height: ${(props) => (props.menuVisible ? '800px' : '0')};
+		${FlexFunc('column', 'flex-start', 'center')}
+}
+`;
+
+const MenuButton = styled.button`
+	color: ${color_subtle};
+	background: none;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	text-decoration: none;
+	font-size: 1.4rem;
+	display: none;
+	@media ${mobile} {
+		display: flex;
+	}
 `;
 
 const ShortcutButton = styled.button`
@@ -89,6 +103,7 @@ const ShortcutButton = styled.button`
 	cursor: pointer;
 	text-decoration: none;
 	position: relative;
+	padding: 1rem;
 
 	&::before {
 		content: '';
@@ -106,6 +121,11 @@ const ShortcutButton = styled.button`
 	&:hover::before {
 		visibility: visible;
 		transform: scaleX(1);
+	}
+
+	a {
+		text-decoration: none;
+		color: ${color_subtle};
 	}
 `;
 
