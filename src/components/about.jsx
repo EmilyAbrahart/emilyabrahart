@@ -13,12 +13,9 @@ import { Icon } from '@iconify/react';
 import bxlRedux from '@iconify/icons-bx/bxl-redux';
 import styledComponents from '@iconify/icons-simple-icons/styled-components';
 import ScrollableAnchor from 'react-scrollable-anchor';
-import { Waypoint } from 'react-waypoint';
 
-const About = ({ setNavVisible }) => {
-	const handleEnter = () => {
-		setNavVisible(true);
-	};
+const About = () => {
+
 	return (
 		<ScrollableAnchor id="about">
 			<AboutContainer>
@@ -77,7 +74,6 @@ const About = ({ setNavVisible }) => {
 								<Icon icon={styledComponents} />
 							</SkillDiv>
 						</SkillsContainer>
-						<Waypoint onEnter={() => handleEnter()} />
 					</AboutSection>
 				</AboutContent>
 			</AboutContainer>
@@ -98,6 +94,7 @@ const AboutContainer = styled(PageSection)`
 	position: relative;
 	overflow: hidden;
 	margin-bottom: -2rem;
+	padding-top: 5rem;
 	${FlexFunc('column', 'center', 'center')};
 `;
 
@@ -113,7 +110,6 @@ const AboutContent = styled.div`
 		border-radius: 50%;
 		border: 2px solid ${color_subtle};
 		@media only screen and (max-device-height: 800px) {
-			/* display: none; */
 		}
 	}
 

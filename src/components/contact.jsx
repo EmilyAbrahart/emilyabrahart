@@ -8,15 +8,9 @@ import {
 	ProjectsSVGContainer,
 } from '../styles';
 import ScrollableAnchor from 'react-scrollable-anchor';
-import { Waypoint } from 'react-waypoint';
 
-const Contact = ({ setNavBackground }) => {
-	const handleEnter = () => {
-		setNavBackground(true);
-	};
-	const handleLeave = () => {
-		setNavBackground(false);
-	};
+const Contact = () => {
+
 	return (
 		<ContactContainer>
 			<ProjectsSVGContainer />
@@ -25,7 +19,6 @@ const Contact = ({ setNavBackground }) => {
 				action="https://formsubmit.co/emilyabrahart@gmail.com"
 				method="POST"
 			>
-				<Waypoint onEnter={() => handleEnter()} onLeave={() => handleLeave()} />
 				<ScrollableAnchor id="contact">
 					<h2>CONTACT ME</h2>
 				</ScrollableAnchor>
