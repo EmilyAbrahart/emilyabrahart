@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Project from './project';
 import ProjectsArray from '../data';
@@ -12,7 +12,7 @@ import {
 import ScrollableAnchor from 'react-scrollable-anchor';
 
 const Projects = () => {
-	const [projects, setProjects] = useState(ProjectsArray);
+	const projects = ProjectsArray;
 
 	return (
 		<ProjectsContainer>

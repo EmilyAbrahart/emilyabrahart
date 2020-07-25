@@ -3,9 +3,7 @@ import styled from 'styled-components';
 import {
 	color_subtle,
 	color_dark,
-	FlexFunc,
 	mobile,
-
 	PageSection,
 	ProjectsSVGContainer,
 } from '../styles';
