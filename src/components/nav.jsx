@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { goToAnchor, goToTop } from 'react-scrollable-anchor';
-// import { faFile } from '@fortawesome/free-solid-svg-icons';
+import { goToAnchor } from 'react-scrollable-anchor';
 import {
 	FlexFunc,
 	color_dark,
@@ -12,18 +11,13 @@ import {
 	mobile,
 } from '../styles';
 
-const Nav = () => {
+const Nav = ({ navBackground, navVisible }) => {
 	return (
-		<NavContainer>
+		<NavContainer navBackground={navBackground} navVisible={navVisible}>
 			<LinkContainer>
-				<ShortcutButton onClick={()=> goToTop()}><NavName>EMILY ABRAHART</NavName></ShortcutButton>
-
-				{/* <SocialLink
-					href="https://www.linkedin.com/in/emilyabrahart"
-					target="_blank"
-				>
-					<FontAwesomeIcon icon={faLinkedin} />
-				</SocialLink> */}
+				<ShortcutButton onClick={() => goToAnchor('home')}>
+					<NavName>EMILY ABRAHART</NavName>
+				</ShortcutButton>
 			</LinkContainer>
 			<ShortcutContainer>
 				<ShortcutButton onClick={() => goToAnchor('about')}>
@@ -43,21 +37,22 @@ const Nav = () => {
 	);
 };
 
-const NavContainer = styled.div`
+const NavContainer = styled.nav`
 	justify-content: space-between;
 	align-items: baseline;
 	display: flex;
 	position: fixed;
 	width: 100%;
 	padding: 0.5rem 2rem;
-	top: 1rem;
-	left: 1rem;
+	top: 0rem;
+	left: 0rem;
 	z-index: 1000;
 	transition: all 0.5s ease-out;
 	color: ${color_subtle};
+	background: ${(props) => (props.navBackground ? color_dark : 'none')};
+	visibility: ${(props) => (props.navVisible ? 'visible' : 'hidden')};
 	@media ${mobile} {
-		width: 100%;
-		justify-content: center;
+		display: none;
 	}
 `;
 

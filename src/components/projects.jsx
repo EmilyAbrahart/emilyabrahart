@@ -11,6 +11,7 @@ import {
 } from '../styles';
 import ScrollableAnchor from 'react-scrollable-anchor';
 
+
 const Projects = () => {
 	const projects = ProjectsArray;
 
@@ -20,7 +21,6 @@ const Projects = () => {
 			<ScrollableAnchor id="projects">
 				<h2>PROJECTS</h2>
 			</ScrollableAnchor>
-
 			<ProjectsContentContainer>
 				{projects.map((project) => {
 					return <Project key={project.id} {...project} />;

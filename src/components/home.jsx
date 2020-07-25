@@ -1,25 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
 import LavaLamp from '../utils/lava';
-import {
-	FlexFunc,
-	color_dark,
-	mobile,
-} from '../styles';
+import { FlexFunc, color_dark, mobile } from '../styles';
+import ScrollableAnchor from 'react-scrollable-anchor';
+import { Waypoint } from 'react-waypoint';
 
-const Home = () => {
+const Home = ({ setNavVisible }) => {
+	const handleEnter = () => {
+		setNavVisible(false);
+	};
+
 	return (
 		<HomeContainer>
+			<ScrollableAnchor id="home">
+				<AnchorDiv />
+			</ScrollableAnchor>
 			<LavaLamp />
+
 			<h1>
 				EMILY
 				<br /> ABRAHART
 			</h1>
+
 			<TaglineContainerRight>
 				<Tagline>Full Stack Web Developer</Tagline>
 				<div>London, UK</div>
 			</TaglineContainerRight>
+
 			<HomeBottom></HomeBottom>
+			<Waypoint onEnter={() => handleEnter()} />
 		</HomeContainer>
 	);
 };
@@ -33,6 +42,12 @@ const HomeContainer = styled.div`
 	letter-spacing: 2px;
 	position: relative;
 	overflow: hidden;
+	@media ${mobile} {
+		${FlexFunc('column', 'center', 'center')};
+		h1 {
+			text-align: center;
+		}
+	}
 `;
 
 const TaglineContainerRight = styled.div`
@@ -49,14 +64,19 @@ const Tagline = styled.div`
 	font-weight: bold;
 `;
 const HomeBottom = styled.div`
-position: absolute;
-bottom: 0;
-width: 100%;
-height: 20%;
-background: rgb(255, 95, 109);
-		background: linear-gradient(
-			90deg,
-			rgba(255, 95, 109, 1) 80%,
-			rgba(255, 195, 113, 1) 100%
-		);
-`
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+
+	background: rgb(255, 95, 109);
+	background: linear-gradient(
+		90deg,
+		rgba(255, 95, 109, 1) 80%,
+		rgba(255, 195, 113, 1) 100%
+	);
+`;
+
+const AnchorDiv = styled.div`
+	position: absolute;
+	top: 0;
+`;

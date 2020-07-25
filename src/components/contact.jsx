@@ -8,8 +8,15 @@ import {
 	ProjectsSVGContainer,
 } from '../styles';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { Waypoint } from 'react-waypoint';
 
-const Contact = () => {
+const Contact = ({ setNavBackground }) => {
+	const handleEnter = () => {
+		setNavBackground(true);
+	};
+	const handleLeave = () => {
+		setNavBackground(false);
+	};
 	return (
 		<ContactContainer>
 			<ProjectsSVGContainer />
@@ -18,12 +25,13 @@ const Contact = () => {
 				action="https://formsubmit.co/emilyabrahart@gmail.com"
 				method="POST"
 			>
+				<Waypoint onEnter={() => handleEnter()} onLeave={() => handleLeave()} />
 				<ScrollableAnchor id="contact">
 					<h2>CONTACT ME</h2>
 				</ScrollableAnchor>
 				<FieldContainer>
 					<div className="label">NAME</div>
-					<input type="text" name="name" required/>
+					<input type="text" name="name" required />
 				</FieldContainer>
 				<FieldContainer>
 					<div className="label">EMAIL</div>
@@ -31,7 +39,7 @@ const Contact = () => {
 				</FieldContainer>
 				<FieldContainer>
 					<div className="label">MESSAGE</div>
-					<textarea name="message" required/>
+					<textarea name="message" required />
 				</FieldContainer>
 				<FormButton type="submit">Submit</FormButton>
 			</StyledForm>
@@ -45,6 +53,7 @@ const ContactContainer = styled(PageSection)`
 	background-color: ${color_subtle};
 	color: ${color_dark};
 	justify-content: space-between;
+	padding-bottom: 3rem;
 `;
 
 const StyledForm = styled.form`
@@ -56,7 +65,7 @@ const StyledForm = styled.form`
 	align-items: 'center';
 	h2 {
 		letter-spacing: 0.5rem;
-		z-index: 5000;
+
 		text-align: center;
 	}
 	@media ${mobile} {
@@ -67,7 +76,6 @@ const StyledForm = styled.form`
 const FieldContainer = styled.div`
 	width: 100%;
 	padding: 1rem 0;
-	z-index: 5000;
 
 	.label {
 		letter-spacing: 0.5rem;
@@ -96,7 +104,7 @@ const FormButton = styled.button`
 
 	&:hover {
 		cursor: pointer;
-		color: ${color_dark};
 		background-color: ${color_subtle};
+		color: ${color_dark};
 	}
 `;

@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FormSVG } from '../img/FormSVG';
-import { FormSVG2 } from '../img/FormSVG2';
 
 // VARIABLES
 // Colors
@@ -71,39 +69,6 @@ export const AboutSVGContainer = () => {
 		</SVGContainerDiv>
 	);
 };
-
-const FormSVGContainerDiv = styled.div`
-	width: 60%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	position: absolute;
-`;
-
-const FormSVGContainerDiv1 = styled(FormSVGContainerDiv)`
-bottom: 10rem;
-right: -10rem;
-`
-const FormSVGContainerDiv2 = styled(FormSVGContainerDiv)`
-top: 0rem;
-left: -10rem;
-`
-
-export const FormSVGContainer = () => {
-	return (
-		<FormSVGContainerDiv1>
-			<FormSVG />
-		</FormSVGContainerDiv1>
-	);
-};
-export const FormSVGContainer2 = () => {
-	return (
-		<FormSVGContainerDiv2>
-			<FormSVG2 />
-		</FormSVGContainerDiv2>
-	);
-};
-
 
 export const ProjectsSVG = () => {
 	return (
