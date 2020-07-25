@@ -105,11 +105,7 @@ const FormButton = styled.button`
 
 	&:hover {
 		cursor: pointer;
-		border: none;
-		background: linear-gradient(
-			90deg,
-			rgba(255, 95, 109, 1) 80%,
-			rgba(255, 195, 113, 1) 100%
-		);
+		background-color: ${color_subtle};
+		color: ${color_dark};
 	}
 `;

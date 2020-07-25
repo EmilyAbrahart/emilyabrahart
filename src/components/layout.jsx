@@ -7,6 +7,7 @@ import Projects from './projects';
 import Contact from './contact';
 import Nav from './nav';
 import Footer from './footer';
+import {GlobalStyle} from '../styles/GlobalStyles';
 
 const Layout = () => {
 
@@ -20,6 +21,7 @@ const Layout = () => {
 			<Projects/>
 			<Contact setNavBackground={setNavBackground}/>
 			<Footer />
+			<GlobalStyle />
 		</AppContainer>
 	);
 };

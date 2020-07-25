@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { goToAnchor } from 'react-scrollable-anchor';
-// import { faFile } from '@fortawesome/free-solid-svg-icons';
 import {
 	FlexFunc,
 	color_dark,
@@ -19,13 +18,6 @@ const Nav = ({ navBackground }) => {
 				<ShortcutButton onClick={() => goToAnchor('home')}>
 					<NavName>EMILY ABRAHART</NavName>
 				</ShortcutButton>
-
-				{/* <SocialLink
-					href="https://www.linkedin.com/in/emilyabrahart"
-					target="_blank"
-				>
-					<FontAwesomeIcon icon={faLinkedin} />
-				</SocialLink> */}
 			</LinkContainer>
 			<ShortcutContainer>
 				<ShortcutButton onClick={() => goToAnchor('about')}>
