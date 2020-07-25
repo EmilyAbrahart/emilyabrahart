@@ -11,9 +11,9 @@ import {
 	mobile,
 } from '../styles';
 
-const Nav = ({ navBackground }) => {
+const Nav = ({ navBackground, navVisible }) => {
 	return (
-		<NavContainer navBackground={navBackground}>
+		<NavContainer navBackground={navBackground} navVisible={navVisible}>
 			<LinkContainer>
 				<ShortcutButton onClick={() => goToAnchor('home')}>
 					<NavName>EMILY ABRAHART</NavName>
@@ -45,14 +45,14 @@ const NavContainer = styled.nav`
 	width: 100%;
 	padding: 0.5rem 2rem;
 	top: 0rem;
-	left: 1rem;
+	left: 0rem;
 	z-index: 1000;
 	transition: all 0.5s ease-out;
 	color: ${color_subtle};
 	background: ${(props) => (props.navBackground ? color_dark : 'none')};
+	visibility: ${(props) => (props.navVisible ? 'visible' : 'hidden')};
 	@media ${mobile} {
-		width: 100%;
-		justify-content: center;
+		display: none;
 	}
 `;
 

@@ -65,7 +65,7 @@ const StyledForm = styled.form`
 	align-items: 'center';
 	h2 {
 		letter-spacing: 0.5rem;
-		z-index: 5000;
+
 		text-align: center;
 	}
 	@media ${mobile} {
@@ -76,7 +76,6 @@ const StyledForm = styled.form`
 const FieldContainer = styled.div`
 	width: 100%;
 	padding: 1rem 0;
-	z-index: 5000;
 
 	.label {
 		letter-spacing: 0.5rem;

@@ -47,7 +47,7 @@ const LavaContainer = styled.div`
 	position: absolute;
 	top: 0;
 	width: 100%;
-	height: 80%;
+	height: 100%;
 	.lamp {
 		position: absolute;
 		top: 50%;

@@ -7,19 +7,21 @@ import Projects from './projects';
 import Contact from './contact';
 import Nav from './nav';
 import Footer from './footer';
-import {GlobalStyle} from '../styles/GlobalStyles';
+import MobileNav from './mobileNav';
+import { GlobalStyle } from '../styles/GlobalStyles';
 
 const Layout = () => {
-
 	const [navBackground, setNavBackground] = useState(false);
+	const [navVisible, setNavVisible] = useState(false);
 
 	return (
 		<AppContainer>
-			<Nav navBackground={navBackground}/>
-			<Home />
-			<About />
-			<Projects/>
-			<Contact setNavBackground={setNavBackground}/>
+			<MobileNav />
+			<Nav navBackground={navBackground} navVisible={navVisible} />
+			<Home setNavVisible={setNavVisible} />
+			<About setNavVisible={setNavVisible} />
+			<Projects />
+			<Contact setNavBackground={setNavBackground} />
 			<Footer />
 			<GlobalStyle />
 		</AppContainer>

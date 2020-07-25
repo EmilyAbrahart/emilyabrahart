@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import LavaLamp from '../utils/lava';
 import { FlexFunc, color_dark, mobile } from '../styles';
 import ScrollableAnchor from 'react-scrollable-anchor';
+import { Waypoint } from 'react-waypoint';
 
-const Home = () => {
+const Home = ({ setNavVisible }) => {
+	const handleEnter = () => {
+		setNavVisible(false);
+	};
+
 	return (
 		<HomeContainer>
 			<ScrollableAnchor id="home">
@@ -21,7 +26,9 @@ const Home = () => {
 				<Tagline>Full Stack Web Developer</Tagline>
 				<div>London, UK</div>
 			</TaglineContainerRight>
+
 			<HomeBottom></HomeBottom>
+			<Waypoint onEnter={() => handleEnter()} />
 		</HomeContainer>
 	);
 };
@@ -35,6 +42,12 @@ const HomeContainer = styled.div`
 	letter-spacing: 2px;
 	position: relative;
 	overflow: hidden;
+	@media ${mobile} {
+		${FlexFunc('column', 'center', 'center')};
+		h1 {
+			text-align: center;
+		}
+	}
 `;
 
 const TaglineContainerRight = styled.div`
@@ -54,7 +67,7 @@ const HomeBottom = styled.div`
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 20%;
+
 	background: rgb(255, 95, 109);
 	background: linear-gradient(
 		90deg,
@@ -64,6 +77,6 @@ const HomeBottom = styled.div`
 `;
 
 const AnchorDiv = styled.div`
-position: absolute;
-top:0;
-`
+	position: absolute;
+	top: 0;
+`;
