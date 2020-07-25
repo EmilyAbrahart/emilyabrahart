@@ -51,7 +51,7 @@ export const AboutSVG = () => {
 					y2="88"
 					gradientUnits="userSpaceOnUse"
 				>
-					<stop offset="0.66" stopColor="#FF5F6D" />
+					<stop offset="0.8" stopColor="#FF5F6D" />
 					<stop offset="1" stopColor="#FFC371" />
 				</linearGradient>
 			</defs>
@@ -62,6 +62,7 @@ export const AboutSVG = () => {
 export const SVGContainerDiv = styled.div`
 	width: 100%;
 	position: relative;
+	margin-bottom: 5rem;
 `;
 export const AboutSVGContainer = () => {
 	return (

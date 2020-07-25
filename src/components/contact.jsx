@@ -5,35 +5,35 @@ import {
 	color_dark,
 	FlexFunc,
 	mobile,
-	tablet,
+
 	PageSection,
-	FormSVGContainer,
-	FormSVGContainer2,
 	ProjectsSVGContainer,
 } from '../styles';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 const Contact = () => {
 	return (
 		<ContactContainer>
 			<ProjectsSVGContainer />
 			<StyledForm
+				name="contactForm"
 				action="https://formsubmit.co/emilyabrahart@gmail.com"
 				method="POST"
 			>
-				<h2>CONTACT ME</h2>
-				<FormSVGContainer />
-				<FormSVGContainer2 />
+				<ScrollableAnchor id="contact">
+					<h2>CONTACT ME</h2>
+				</ScrollableAnchor>
 				<FieldContainer>
 					<div className="label">NAME</div>
-					<input type="text" name="name" />
+					<input type="text" name="name" required/>
 				</FieldContainer>
 				<FieldContainer>
 					<div className="label">EMAIL</div>
-					<input type="email" name="email" />
+					<input type="email" name="email" required />
 				</FieldContainer>
 				<FieldContainer>
 					<div className="label">MESSAGE</div>
-					<textarea name="message" />
+					<textarea name="message" required/>
 				</FieldContainer>
 				<FormButton type="submit">Submit</FormButton>
 			</StyledForm>
@@ -51,7 +51,6 @@ const ContactContainer = styled(PageSection)`
 
 const StyledForm = styled.form`
 	width: 400px;
-	min-height: 100vh;
 	position: relative;
 	display: flex;
 	flex-direction: column;

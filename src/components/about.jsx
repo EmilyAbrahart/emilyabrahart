@@ -12,9 +12,11 @@ import { FlexFunc, color_subtle, mobile, PageSection } from '../styles';
 import { Icon } from '@iconify/react';
 import bxlRedux from '@iconify/icons-bx/bxl-redux';
 import styledComponents from '@iconify/icons-simple-icons/styled-components';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 const About = () => {
 	return (
+<ScrollableAnchor id='about'>
 		<AboutContainer>
 			<AboutContent>
 				<img src={photo} alt="Emily Abrahart" />
@@ -47,7 +49,7 @@ const About = () => {
 
 					<p>
 						I&apos;m currently seeking my first web developer position whilst
-						buildong on my current skillset learning Typescript and MongoDB.
+						building on my current skillset learning Typescript and MongoDB.
 					</p>
 				</AboutSection>
 				<AboutSection>
@@ -72,9 +74,9 @@ const About = () => {
 						</SkillDiv>
 					</SkillsContainer>
 				</AboutSection>
-				<p className="examples">Some examples of my work can be found below.</p>
 			</AboutContent>
 		</AboutContainer>
+		</ScrollableAnchor>
 	);
 };
 
@@ -84,12 +86,13 @@ const AboutContainer = styled(PageSection)`
 	background: rgb(255, 95, 109);
 	background: linear-gradient(
 		90deg,
-		rgba(255, 95, 109, 1) 66%,
+		rgba(255, 95, 109, 1) 80%,
 		rgba(255, 195, 113, 1) 100%
 	);
 	color: ${color_subtle};
 	position: relative;
 	overflow: hidden;
+	margin-bottom: -2rem;
 `;
 
 const AboutContent = styled.div`
@@ -133,9 +136,4 @@ const SkillDiv = styled.div`
 	font-size: 3rem;
 	padding: 1rem;
 	color: ${color_subtle};
-`;
-
-const BottomContainer = styled.div`
-	position: absolute;
-	top: 100%;
 `;

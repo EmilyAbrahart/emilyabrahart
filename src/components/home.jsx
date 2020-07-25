@@ -3,11 +3,8 @@ import styled from 'styled-components';
 import LavaLamp from '../utils/lava';
 import {
 	FlexFunc,
-	color_pink,
 	color_dark,
-	color_subtle,
 	mobile,
-	tablet,
 } from '../styles';
 
 const Home = () => {
@@ -59,7 +56,7 @@ height: 20%;
 background: rgb(255, 95, 109);
 		background: linear-gradient(
 			90deg,
-			rgba(255, 95, 109, 1) 66%,
+			rgba(255, 95, 109, 1) 80%,
 			rgba(255, 195, 113, 1) 100%
 		);
 `

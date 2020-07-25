@@ -5,15 +5,16 @@ import Home from './home';
 import About from './about';
 import Projects from './projects';
 import Contact from './contact';
+import Nav from './nav';
 import useWindowDimensions from '../utils/useWindowDimensions';
 
 
 const Layout = () => {
 	const { height, width } = useWindowDimensions();
 
-	
 	return (
 		<AppContainer height={height}>
+			<Nav />
 			<Home />
 			<About />
 			<Projects />

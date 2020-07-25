@@ -9,6 +9,7 @@ import {
 	PageSection,
 	AboutSVGContainer,
 } from '../styles';
+import ScrollableAnchor from 'react-scrollable-anchor';
 
 const Projects = () => {
 	const [projects, setProjects] = useState(ProjectsArray);
@@ -16,7 +17,9 @@ const Projects = () => {
 	return (
 		<ProjectsContainer>
 			<AboutSVGContainer />
-			<h2>PROJECTS</h2>
+			<ScrollableAnchor id="projects">
+				<h2>PROJECTS</h2>
+			</ScrollableAnchor>
 
 			<ProjectsContentContainer>
 				{projects.map((project) => {

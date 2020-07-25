@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { color_subtle } from '../styles';
 
 const LavaLamp = () => {
 	return (
@@ -52,7 +53,7 @@ const LavaContainer = styled.div`
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
-
+		background: ${color_subtle};
 		height: 100%;
 		width: 100vw;
 		min-width: 100vw;
@@ -83,7 +84,7 @@ const LavaContainer = styled.div`
 		background: rgb(255, 95, 109);
 		background: linear-gradient(
 			90deg,
-			rgba(255, 95, 109, 1) 66%,
+			rgba(255, 95, 109, 1) 80%,
 			rgba(255, 195, 113, 1) 100%
 		);
 	}
@@ -96,7 +97,7 @@ const LavaContainer = styled.div`
 		background: rgb(255, 95, 109);
 		background: linear-gradient(
 			90deg,
-			rgba(255, 95, 109, 1) 66%,
+			rgba(255, 95, 109, 1) 80%,
 			rgba(255, 195, 113, 1) 100%
 		);
 	}
