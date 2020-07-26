@@ -46,6 +46,7 @@ export default LavaLamp;
 const LavaContainer = styled.div`
 	position: absolute;
 	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
 	.lamp {
@@ -53,6 +54,7 @@ const LavaContainer = styled.div`
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		-webkit-transform: -webkit-translate(-50%, -50%);
 		background: ${color_subtle};
 		height: 100%;
 		width: 100vw;
