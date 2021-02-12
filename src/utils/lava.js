@@ -15,8 +15,8 @@ const LavaLamp = () => {
 					<div className="blob"></div>
 					<div className="blob"></div>
 					<div className="blob"></div>
-					<div className="blob top"></div>
-					<div className="blob bottom"></div>
+					{/* <div className="blob top"></div>
+					<div className="blob bottom"></div> */}
 				</div>
 			</div>
 			<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
@@ -72,8 +72,9 @@ const LavaContainer = styled.div`
 	}
 
 	.blob {
+		border: 2px solid #9bced7;
 		border-radius: 50%;
-		background: rgb(255, 95, 109);
+		background: none;
 		position: absolute;
 	}
 

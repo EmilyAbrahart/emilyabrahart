@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
 	FlexFunc,
-	color_subtle,
 	color_dark,
-	color_pink,
+	color_green,
+	color_light,
 	mobile,
 } from '../styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -55,9 +55,10 @@ const ProjectContainer = styled.div`
 	${FlexFunc('column', 'center', 'center')};
 	background: ${color_dark};
 	margin: 1rem;
-	width: 800px;
+	width: 400px;
+	height: 400px;
 	max-width: 90vw;
-	overflow: hidden;
+
 `;
 
 const ProjectImg = styled.div`
@@ -91,7 +92,7 @@ const HeaderContainer = styled.div`
 	width: 100%;
 	background-color: ${color_dark};
 	margin-bottom: 1rem;
-	color: ${color_subtle};
+	color: ${color_light};
 	text-align: center;
 `;
 
@@ -103,11 +104,11 @@ const TechnologiesDiv = styled.div`
 
 const Technology = styled.div`
 	border-radius: 4px;
-	background-color: ${color_pink};
+	background-color: ${color_green};
 	text-align: center;
 	padding: 4px;
 	margin-top: 4px;
-	color: ${color_subtle};
+	color: ${color_light};
 `;
 
 const ProjectLinkContainer = styled.div`
@@ -119,8 +120,8 @@ const ProjectLink = styled.a`
 	margin: 0;
 	padding: 0;
 	width: 50%;
-	background-color: ${color_pink};
-	color: ${color_subtle};
+	background-color: ${color_green};
+	color: ${color_light};
 `;
 
 const ProjectButton = styled.button`
@@ -128,10 +129,10 @@ const ProjectButton = styled.button`
 	font-size: 2rem;
 	cursor: pointer;
 	margin: 0;
-	color: ${color_subtle};
-	background-color: ${color_pink};
+	color: ${color_light};
+	background-color: ${color_green};
 	outline: none;
-	border: 1px solid ${color_pink};
+	border: 1px solid ${color_green};
 	border-radius: 4px;
 	text-align: center;
 	padding: 4px;
